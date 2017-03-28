@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.ResponsiveHelpersPage"
+	Title="Responsive Helpers"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+	
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ComparisonBaseTableStyle" TargetType="Grid">
+			 	<Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
+				<Setter Property="Margin" Value="10" />
+				<Setter Property="Padding" Value="1" />
+				<Setter Property="RowSpacing" Value="1" />
+				<Setter Property="ColumnSpacing" Value="1" />
+			</Style>
+
+			<Style x:Key="ComparisonTableStyle" TargetType="Grid" >
+				<Setter Property="BackgroundColor" Value="{ DynamicResource MainWrapperBackgroundColor }" />
+				<Setter Property="Margin" Value="10" />
+				<Setter Property="Padding" Value="1" />
+				<Setter Property="RowSpacing" Value="1" />
+				<Setter Property="ColumnSpacing" Value="1" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter 
+					Property="WidthRequest" 
+					Value="{ 
+						artina:OnOrientationInt 
+							Portrait=-1,
+							Landscape=700
+					}" 
+				/>
+			</Style>
+
+			<Style x:Key="ComparisonTableHeaderLabelStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
+
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="HeightRequest" Value="40" />
+			</Style>
+
+			<Style x:Key="ComparisonTableIconTickStyle" TargetType="Label" BasedOn="{ StaticResource FontIcon }">
+			 	<Setter Property="BackgroundColor" Value="{ DynamicResource BasePageColor }" />
+			 	<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="24" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+		<ScrollView>
+
+			<StackLayout 
+				Orientation="Vertical"
+				Spacing="0"
+				Padding="0">
+
+				<!-- IMAGES -->
+				<Grid>
+					
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="{ 
+							artina:OnOrientationDouble
+								Default=300,
+								PortraitTablet=500,
+								LandscapeTablet=400
+							}" />
+					</Grid.RowDefinitions>
+					
+					<ffimageloading:CachedImage 
+						Grid.Row="0" 
+						Grid.Column="0" 
+						Grid.ColumnSpan="2"
+						HorizontalOptions="Center"
+						Source="{ 
+							artina:OnOrientationString 
+								PortraitPhone=responsive_helpers_phone_portrait.png,
+								LandscapePhone=responsive_helpers_phone_landscape.png,
+
+								PortraitTablet=responsive_helpers_tablet_portrait.png,
+								LandscapeTablet=responsive_helpers_tablet_landscape.png
+							}"
+						Aspect="AspectFill"
+						VerticalOptions="Center"
+						Margin="20"/>
+				</Grid>
+
+				<!-- INFO -->
+				<Grid
+					Style="{ StaticResource ComparisonTableStyle }">
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="40" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="0"
+						Text="Device" /> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="1" 
+						Text="Platform" /> 
+
+					<!-- DEVICE INFO -->
+					<Grid
+						Grid.Row="1"> 
+						<Grid.RowDefinitions>
+							<RowDefinition Height="60" />
+							<RowDefinition Height="26" />
+						</Grid.RowDefinitions>
+						<Label
+							Grid.Row="0"
+							FontSize="40" 
+							TextColor="{ DynamicResource AccentColor }"
+							Style="{ StaticResource FontIcon }"
+							HorizontalTextAlignment="Center"
+							VerticalTextAlignment="End"
+							Rotation="{ artina:OnOrientationInt Default=0, Landscape=90 }"
+						>
+							<Label.Text>
+								<OnIdiom x:TypeArguments="x:String" 
+									Phone="{ x:Static local:GrialShapesFont.PhoneAndroid }" 
+									Tablet="{ x:Static local:GrialShapesFont.TabletAndroid }"/>
+							</Label.Text>
+						</Label>
+						
+						<Label
+							Grid.Row="1"
+							HorizontalTextAlignment="Center"
+								VerticalTextAlignment="Start">
+							<Label.Text>
+								<OnIdiom x:TypeArguments="x:String" 
+									Phone="Phone" 
+									Tablet="Tablet"/>
+							</Label.Text>
+						</Label>
+					</Grid>
+
+					<!-- PLATFORM INFO -->
+					<Grid 
+						Grid.Column="1"
+						Grid.Row="1"> 
+						<Grid.RowDefinitions>
+							<RowDefinition Height="60" />
+							<RowDefinition Height="26" />
+						</Grid.RowDefinitions>
+						<Label
+							Grid.Row="0"
+							FontSize="40" 
+							TextColor="{ DynamicResource ComplementColor }"
+							Style="{ StaticResource FontIcon }"
+							HorizontalTextAlignment="Center"
+							VerticalTextAlignment="End"
+						>
+							<Label.Text>
+								<OnPlatform x:TypeArguments="x:String" 
+									Android="{ x:Static local:GrialShapesFont.LogoAndroid }" 
+									iOS="{ x:Static local:GrialShapesFont.LogoApple }"/>
+							</Label.Text>
+						</Label>
+
+						<Label
+							Grid.Row="1"
+							HorizontalTextAlignment="Center">
+							<Label.Text>
+								<OnPlatform x:TypeArguments="x:String" 
+									iOS="iOS" 
+									Android="Android"/>
+							</Label.Text>
+						</Label>
+					</Grid>
+				</Grid>
+			
+				
+			
+				<Grid
+					Style="{ StaticResource ComparisonTableStyle }">
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="0"
+						Text="Portrait" /> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="1" 
+						Text="Landscape" /> 
+
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="0" 
+
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								Portrait={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								Portrait=Green 
+							}"
+						/> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="1"
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								Landscape={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								Landscape=Green 
+							}" 
+						/>
+				</Grid>
+
+				<Grid
+					Style="{ StaticResource ComparisonTableStyle }">
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="0" 
+						Text="PortraitPhone" /> 
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="1" 
+						Text="PortraitTablet" /> 
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="2" 
+						Text="PortraitDesktop" /> 
+					
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="0" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								Portrait={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								PortraitPhone=Green 
+							}"
+						/> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="1" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								PortraitTablet={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								PortraitTablet=Green 
+							}" 
+						/> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="2" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								PortraitDesktop={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								PortraitDesktop=Green 
+							}" 
+						/> 
+
+				</Grid>
+				
+				<Grid
+					Style="{ StaticResource ComparisonTableStyle }">
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="0" 
+						Text="LandscapePhone" /> 
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="1" 
+						Text="LandscapeTablet" /> 
+					<Label 
+						Style="{ StaticResource ComparisonTableHeaderLabelStyle }"
+						Grid.Row="0" 
+						Grid.Column="2" 
+						Text="LandscapeDesktop" /> 
+					
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="0" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								LandscapePhone={ x:Static local:GrialShapesFont.Check }, 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								LandscapePhone=Green 
+							}" 
+						/> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="1" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								LandscapeTablet={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								LandscapeTablet=Green 
+							}" 
+						/> 
+
+					<Label 
+						Style="{ StaticResource ComparisonTableIconTickStyle }" 
+						Grid.Row="1" 
+						Grid.Column="2" 
+						Text="{ 
+							artina:OnOrientationString 
+								Default={ x:Static local:GrialShapesFont.Close },
+								LandscapeDesktop={ x:Static local:GrialShapesFont.Check } 
+							}"
+								
+						TextColor="{ 
+							artina:OnOrientationColor
+								Default=Red,
+								LandscapeDesktop=Green 
+							}" 
+						/> 
+				</Grid>
+
+
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+
+</ContentPage>

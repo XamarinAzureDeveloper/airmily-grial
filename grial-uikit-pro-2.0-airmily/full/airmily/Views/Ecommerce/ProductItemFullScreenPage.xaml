@@ -1,0 +1,155 @@
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ProductItemFullScreenPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily" 
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	Title="{Binding Name}">
+	
+	<Grid 
+		RowSpacing="0"
+		VerticalOptions="Fill">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10*" />
+			<RowDefinition Height="90*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<!--PRODUCT IMAGE-->
+		<ffimageloading:CachedImage 
+			Grid.RowSpan="3"
+			Source="{ Binding Image }" 
+			Aspect="AspectFill" 
+
+			FadeAnimationEnabled="false"/>
+
+		<!--IMAGE OVERLAY-->
+		<Image
+			Grid.RowSpan="3"
+			Source="product_item_view_overlay.png" 
+			Aspect="AspectFill" />
+
+		<!-- FAVORITE ICON -->
+		<Label
+			Grid.Row="0"
+			Text="{ x:Static local:GrialShapesFont.Favorite } " 
+			FontSize="{ artina:OnOrientationDouble 
+				Default=28, 
+				PortraitPhone=28,
+				LandscapePhone=28,
+				PortraitTablet=32,
+				LandscapeTablet=32 }" 
+			TextColor="{DynamicResource AccentColor}" 
+			Style="{ StaticResource FontIcon }"
+			HorizontalTextAlignment="End" 
+			VerticalTextAlignment="Start"
+			Margin="0,15,20,0"/>
+
+		<!-- PRODUCT INFO -->
+		<Grid
+			Grid.Row="1"
+			Padding="20,15,20,0"
+			VerticalOptions="End"
+			RowSpacing="5">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<StackLayout
+				HorizontalOptions="Center"
+				VerticalOptions="End"
+				Grid.Row="0">
+				
+				<!-- PRODUCT NAME -->
+				<Label
+					Grid.Row="0"
+					Text="{Binding Name}"
+					FontSize="{ artina:OnOrientationDouble 
+						PortraitPhone=24,
+						LandscapePhone=24,
+						PortraitTablet=26,
+						LandscapeTablet=26 }"
+					FontAttributes="Bold"
+					HorizontalTextAlignment="Center"
+					TextColor="{DynamicResource OverImageTextColor}"/>
+
+				<!-- MANUFACTURER -->
+				<Label
+					Text="{Binding Manufacturer, StringFormat='BY {0:F0}'}}"
+					FontSize="{ artina:OnOrientationDouble
+						PortraitPhone=14,
+						LandscapePhone=14,
+						PortraitTablet=12,
+						LandscapeTablet=12 }"
+					HorizontalTextAlignment="Center"
+					TextColor="{ DynamicResource AccentColor }"/>
+
+				<!-- PRICE -->
+				<Label
+					Grid.Row="0"
+					Grid.RowSpan="2"
+					Text="{Binding Price}"
+					FontSize="{ artina:OnOrientationDouble
+						PortraitPhone=30,
+						LandscapePhone=30,
+						PortraitTablet=40,
+						LandscapeTablet=40 }"
+					HorizontalTextAlignment="Center"
+					TextColor ="{DynamicResource OverImageTextColor}"/>
+
+				<BoxView 
+						Style="{StaticResource BrandNameOrnamentStyle}"
+						HorizontalOptions="Center"
+						BackgroundColor="{ DynamicResource AccentColor }"/>
+
+			</StackLayout>
+			
+			<!-- DESCRIPTION -->
+			<ScrollView
+				Grid.Row="2"
+				Padding="40,0">
+				<StackLayout
+					Spacing="15"
+					HorizontalOptions="Center">
+					<Label
+						Text="{Binding Description}"
+						HorizontalTextAlignment="Center"
+						HorizontalOptions="Fill"
+						TextColor="{ DynamicResource OverImageTextColor }"
+						FontSize="{ artina:OnOrientationDouble
+							PortraitPhone=15,
+							LandscapePhone=15,
+							PortraitTablet=18,
+							LandscapeTablet=18 }"/>
+					
+				</StackLayout>
+			</ScrollView>
+
+
+		</Grid>
+
+
+
+		<!---BUY BUTTON -->
+		<artina:Button
+			Grid.Row="2"
+			Margin="20,10,20,20"
+			Style="{DynamicResource PrimaryActionButtonStyle}" 
+			Text="Add to cart"
+			WidthRequest="{ artina:OnOrientationDouble
+				LandscapePhone=200,
+				LandscapeTablet=400 }"
+			HorizontalOptions="{ artina:OnOrientationLayoutOptions
+				PortraitPhone=Fill,
+				LandscapePhone=Center,
+				PortraitTablet=Fill,
+				LandscapeTablet=Center }"/>
+	
+	</Grid>	
+
+</ContentPage>

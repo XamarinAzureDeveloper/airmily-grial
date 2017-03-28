@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.CategoriesListItemTemplate"
+	BackgroundColor="Black"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared">
+
+		<StackLayout 
+			BackgroundColor="{Binding BackgroundColor}"
+			Spacing="20" 
+			HorizontalOptions="FillAndExpand"
+			VerticalOptions="FillAndExpand" 
+			Orientation="Horizontal" >
+
+			<Grid 
+				BackgroundColor="#33000000"
+				WidthRequest="80" 
+				HorizontalOptions="Start" 
+				VerticalOptions="FillAndExpand">
+					<Grid.WidthRequest>
+						<OnIdiom x:TypeArguments="x:Double"
+							Phone="80"
+							Tablet="100"/>
+						</Grid.WidthRequest>
+				<Label 
+					Text="{Binding Icon}"
+					FontSize="40" 
+					Style="{StaticResource FontIcon}"
+					HorizontalOptions="Center"
+					VerticalOptions="Center"
+					TextColor="White"
+				/>
+
+			</Grid>
+
+
+			<StackLayout VerticalOptions="Center" Spacing="2">
+
+				<Label 
+					Text="{Binding Name}"
+					TextColor="{ DynamicResource InverseTextColor }" />
+				
+				<Label 
+					Text="{Binding SamplesList.Count, StringFormat='{0:F0} screens'} }" 
+					FontAttributes="Italic"
+					TextColor="{ DynamicResource InverseTextColor }" 
+					FontSize="14"
+					Opacity=".5"/>
+
+			</StackLayout>
+
+		</StackLayout>
+</ContentView>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.EmptyStatePage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	Title="Empty State"
+	BackgroundColor="{DynamicResource BasePageColor}">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid
+			Grid.Row="0"
+			VerticalOptions="Center"
+			HorizontalOptions="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="60*"/>
+				<RowDefinition Height="40*"/>
+			</Grid.RowDefinitions>
+
+
+			<!--ICON BACKGROUND-->
+			<Label
+				Grid.Row="0"
+				Style="{StaticResource RoundShape}" 
+				TextColor="{DynamicResource ComplementColor}"
+				VerticalOptions="Center"
+				HorizontalOptions="Center"
+				FontSize="250"
+				Opacity="0.1"/>
+
+			<!--ICON BACKGROUND-->
+			<Label
+				Grid.Row="0"
+				Style="{StaticResource RoundShape}" 
+				TextColor="{DynamicResource ComplementColor}"
+				VerticalOptions="Center"
+				HorizontalOptions="Center"
+				FontSize="180"
+				Opacity="0.1"/>	
+
+			<!--ICON-->
+			<Label
+				Grid.Row="0"
+				Text="{ x:Static local:GrialShapesFont.Settings }"
+				Style="{StaticResource FontIcon}"
+				FontSize="100"
+				HorizontalTextAlignment="Center"
+				TextColor="{ DynamicResource ComplementColor }"
+				VerticalOptions="Center"
+				HorizontalOptions="Center"/>
+
+				
+			<!--TEXT -->
+			<StackLayout 
+					Grid.Row="1" 
+					VerticalOptions="Center"
+					Padding="60,0" 
+					Spacing="2">
+				<Label 
+					HorizontalTextAlignment="Center" 
+					Text="Empty State" 
+					FontSize="24" 
+					FontAttributes="Bold" 
+					TextColor="{ DynamicResource BaseTextColor }"/>
+				<Label 
+					HorizontalTextAlignment="Center"
+					Opacity="0.8" 
+					Text="There’s nothing here my friend :)" 
+					FontSize="18" 
+					TextColor="{ DynamicResource BaseTextColor }"/>
+			</StackLayout>
+
+
+
+				
+		</Grid>
+
+		<!--BUTTON-->
+		<artina:Button
+			Grid.Row="1"
+			Style="{DynamicResource PrimaryActionButtonStyle}"
+			BackgroundColor="{DynamicResource ComplementColor}"
+			VerticalOptions="End"
+			Text="Done"
+			Margin="20"
+			WidthRequest="{ artina:OnOrientationDouble
+				LandscapePhone=200 }"
+			HorizontalOptions="{ artina:OnOrientationLayoutOptions
+				PortraitPhone=Fill,
+				LandscapePhone=Center,
+				PortraitTablet=Fill,
+				LandscapeTablet=Fill }"
+			Clicked="OnCloseButtonClicked"/>
+
+
+	</Grid>
+</ContentPage>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.SocialPage" 
+	Title="Social" 
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+	x:Name="page" >
+
+	<ContentPage.Content>
+		<Grid >
+
+		<!-- BACKGROUND IMAGE --> 
+		<Image 
+			BackgroundColor="Black"  
+			Source="{ StaticResource SocialHeaderBackgroundImage0 }" 
+			IsOpaque="true" 
+			Opacity="1"
+			VerticalOptions="Start"
+			Aspect="AspectFill">
+			<Image.HeightRequest>
+				<OnIdiom x:TypeArguments="x:Double"
+						Phone="300"
+						Tablet="400"/>
+			</Image.HeightRequest>
+		</Image>
+
+		<ScrollView>
+
+			<!--GRID WRAPPER-->
+			<Grid Padding="0" MinimumWidthRequest="300" RowSpacing="0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<!--SOCIAL HEADER-->
+				<Grid Grid.Row="0" 
+					  Padding="0">
+					  <Grid.HeightRequest>
+					  	<OnIdiom x:TypeArguments="x:Double"
+							Phone="300"
+							Tablet="400"/>
+					  </Grid.HeightRequest>
+
+				<StackLayout 
+						Grid.Row="0"
+						Spacing="20"
+						VerticalOptions="Center"
+						Padding="20"
+						TranslationY="-20"
+						>
+
+					<Grid 
+						HorizontalOptions="Center"
+						VerticalOptions="Center"
+						TranslationY="25"
+						>
+
+						<!-- AVATAR -->
+						<artina:CircleImage 
+							x:Name="avatar"
+							Source="{ StaticResource ThemeAvatarSample0Image }"
+							HeightRequest="100"
+							WidthRequest="100"
+							/>
+
+						<!-- BADGE -->
+						<local:Badge 
+							BadgeText="10+" 
+							BadgeTextColor="{ DynamicResource InverseTextColor }"  
+							BadgeBackgroundColor="#22c064"
+							HorizontalOptions="Center"
+							VerticalOptions="Start"
+							TranslationX="40"
+							/>
+					</Grid>
+
+					<!-- USER NAME AND DESCRIPTION -->
+					<StackLayout 
+						Padding="20">
+						<Label 
+							Text="Robert Stainford" 
+							TextColor="{ DynamicResource OverImageTextColor }" 
+							HorizontalTextAlignment="Center"
+							FontSize="{ artina:OnOrientationDouble
+								PortraitPhone=18,
+								LandscapePhone=18,
+								PortraitTablet=22,
+								LandscapeTablet=22 }" 
+							FontAttributes="Bold" />
+						<Label 
+							TextColor="{ DynamicResource OverImageTextColor }" 
+							HorizontalTextAlignment="Center" 
+							Text="Passion driven designer and developer. Frustrated musician and father of two."
+							FontSize="{ artina:OnOrientationDouble
+								PortraitPhone=15,
+								LandscapePhone=15,
+								PortraitTablet=18,
+								LandscapeTablet=18 }"/>
+					</StackLayout>
+				</StackLayout>
+
+
+					<!-- TOOLBAR -->
+					<Grid 
+						VerticalOptions="End"
+						Style="{StaticResource ToolbarStyle}"
+						BackgroundColor="{DynamicResource TranslucidBlack}"
+						>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<StackLayout
+							Grid.Column="0"
+							Orientation="Horizontal"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							Spacing="0">
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text="{ x:Static local:GrialShapesFont.FavoriteBorder }"
+								FontFamily="{ StaticResource IconsFontFamily }"
+								TextColor="{ DynamicResource AccentColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text=" 1629"
+								TextColor="{ DynamicResource OverImageTextColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+						</StackLayout>
+
+						<StackLayout
+							Grid.Column="1"
+							Orientation="Horizontal"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							Spacing="0">
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text="{ x:Static local:GrialShapesFont.ChatBubble }"
+								FontFamily="{ StaticResource IconsFontFamily }"
+								TextColor="{ DynamicResource AccentColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text=" 235"
+								TextColor="{ DynamicResource OverImageTextColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+						</StackLayout>
+
+						<StackLayout
+							Grid.Column="2"
+							Orientation="Horizontal"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							Spacing="0">
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text="{ x:Static local:GrialShapesFont.Person }"
+								FontFamily="{ StaticResource IconsFontFamily }"
+								TextColor="{ DynamicResource AccentColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text=" 1209"
+								TextColor="{ DynamicResource OverImageTextColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+						</StackLayout>
+						
+						<StackLayout
+							Grid.Column="3"
+							Orientation="Horizontal"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							Spacing="0">
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text="{ x:Static local:GrialShapesFont.StarBorder }"
+								FontFamily="{ StaticResource IconsFontFamily }"
+								TextColor="{ DynamicResource AccentColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+
+							<Label
+								VerticalTextAlignment="Center" 
+								HorizontalTextAlignment="Center"
+								Text=" 427"
+								TextColor="{ DynamicResource OverImageTextColor }">
+								<Label.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+			                            Phone="15" 
+			                            Tablet="20" />
+								</Label.FontSize> 
+							</Label>
+						</StackLayout>
+
+						
+					</Grid>
+
+
+
+				</Grid>
+
+				<Grid Grid.Row="1" BackgroundColor="{DynamicResource BasePageColor}">
+
+					<!--SOCIAL HEADER-->
+					<StackLayout Padding="0">
+						  	<local:SocialHeaderStyleTemplate 
+							Text="&#032;PHOTOS"
+							IconText="{ x:Static local:GrialShapesFont.InsertPhoto } "/>
+
+						<!-- SOCIAL IMAGE GALLERY GRID -->
+						<artina:GridOptionsView 
+								Padding="10,0" 
+								ColumnSpacing="10" 
+								RowSpacing="10" 
+								VerticalOptions="Fill" 
+								HeightRequest="400" 
+								ColumnCount="3"
+								RowCount="3"
+								ItemsSource="{Binding Images}">
+
+								<artina:GridOptionsView.ItemTemplate>
+									<DataTemplate>
+										<local:SocialGalleryImage Image="{Binding .}"/>
+									</DataTemplate>
+								</artina:GridOptionsView.ItemTemplate>
+						</artina:GridOptionsView>
+
+
+						<!-- SOCIAL HEADER -->
+						<local:SocialHeaderStyleTemplate 
+							Text="&#032;FRIENDS"
+							IconText="{ x:Static local:GrialShapesFont.Group } "/>
+
+						<BoxView 
+							Style="{StaticResource SocialHeaderStyleBorderBottomStyle}" />
+
+						<!-- FRIENDS LIST -->
+						<ListView 
+							ItemsSource="{Binding Friends}"
+							RowHeight="66" 
+							SeparatorColor="{ DynamicResource ListViewSeparatorColor }">
+
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<ViewCell>
+										<local:FriendItemTemplate />
+									</ViewCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+
+					</StackLayout>
+				</Grid>
+			</Grid>
+		</ScrollView>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

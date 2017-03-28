@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.CardsListPage"
+	Title="Categories List Page"
+	BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+
+	<StackLayout>
+
+		<ListView 
+			ItemsSource="{Binding SamplesCategories}"
+			SeparatorVisibility="None"
+			SeparatorColor="Transparent"
+			ItemTapped="OnItemTapped"
+			HasUnevenRows="false"
+			Margin="0,5">
+			<ListView.RowHeight>
+				<OnIdiom x:TypeArguments="x:Int32"
+					Phone="100"
+					Tablet="120"/>
+			</ListView.RowHeight>
+				
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<local:CardsListItemTemplate  />
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+
+		</ListView>
+
+	</StackLayout>
+
+</ContentPage>

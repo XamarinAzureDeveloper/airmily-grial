@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ArticleClassicViewItemTemplate"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	Padding="10">
+
+	
+	<Grid 
+		RowSpacing="5" 
+		ColumnSpacing="10" 
+		Padding="10" 
+		BackgroundColor="{ DynamicResource BasePageColor }">
+		
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="24"/>
+			<RowDefinition Height="16"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+
+		<ffimageloading:CachedImage
+			Grid.Row="0" 
+			Grid.RowSpan="3"
+			FadeAnimationEnabled="true"
+			Source="{ Binding BackgroundImage }" 
+			Aspect="AspectFill"
+			HeightRequest="100" />
+
+		<Label 
+			Grid.Row="0"
+			Grid.Column="1"
+			Text="{ Binding Title }" 
+			FontAttributes="Bold" 
+			FontSize="18"
+			LineBreakMode="TailTruncation"
+			TextColor="{ DynamicResource AccentColor }" />
+			
+		<Label 
+			Grid.Row="1" 
+			Grid.Column="1"
+			Text="{ Binding When }" 
+			Opacity=".7"
+			FontSize="12" />
+		
+		<Label 
+			Grid.Row="2" 
+			Grid.Column="1"
+			Text="{ Binding Body }" 
+			FontSize="{ artina:OnOrientationDouble 
+					PortraitPhone=12,
+					LandscapePhone=12,
+					PortraitTablet=14,
+					LandscapeTablet=14 }" />
+	</Grid>
+
+</ContentView>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="airmily.Views.Controls.TransItemTemplateView">
+  <ContentView.Content>
+    <Grid BackgroundColor="Black">
+      <Image
+        BackgroundColor="{StaticResource BrandColorLighter}"
+        Aspect="AspectFill"
+        Opacity=".7"/>
+
+      <Grid
+        ColumnSpacing="0"
+        RowSpacing="0"
+        Padding="20">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" VerticalOptions="End" HorizontalOptions="Start">
+          <Label
+            FontSize="18"
+            FontAttributes="Bold"
+            Text="{Binding Main}"
+            LineBreakMode="WordWrap"
+            TextColor="White"
+					/>
+        </StackLayout>
+
+
+        <StackLayout
+          Orientation="Horizontal"
+          HorizontalOptions="Fill"
+          VerticalOptions="FillAndExpand"
+          Grid.Row="1">
+          <Label
+            Text="{Binding Details}"
+            TextColor="White"
+            FontAttributes="Bold"
+            FontSize="16"
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="End" />
+          <Label
+            Text="{Binding Value}"
+            TextColor="White"
+            FontSize="16"
+            HorizontalOptions="End"
+            TranslationX="-10"
+            VerticalOptions="End"/>
+        </StackLayout>
+
+      </Grid>
+    </Grid>
+  </ContentView.Content>
+</ContentView>
+

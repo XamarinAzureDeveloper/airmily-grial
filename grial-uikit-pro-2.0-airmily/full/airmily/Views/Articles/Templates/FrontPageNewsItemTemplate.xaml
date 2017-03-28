@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.FrontPageNewsItemTemplate"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+	
+	<ContentView.Content>
+		<Grid 
+			Padding="15"
+			RowSpacing="5"
+			ColumnSpacing="15">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<!-- TITLE -->
+			<Label 
+				Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				Text="{ Binding Title }" 
+				FontAttributes="Bold" 
+				FontSize="{ artina:OnOrientationDouble 
+					PortraitPhone=14,
+					LandscapePhone=14,
+					PortraitTablet=16,
+					LandscapeTablet=18 }"
+				LineBreakMode="TailTruncation"
+				TextColor="{ DynamicResource AccentColor }" />
+
+			<!-- IMAGE -->
+			<ffimageloading:CachedImage 
+				Grid.Row="1" 
+				Grid.Column="0"
+				Grid.RowSpan="2"
+				FadeAnimationEnabled="true"
+				TranslationY="5"
+				Source="{ Binding BackgroundImage }" 
+				HeightRequest="100" 
+				VerticalOptions="StartAndExpand"
+				Aspect="AspectFill"/>
+
+			<!-- ARTICLE -->
+			<Label 
+				Grid.Row="1" 
+				Grid.Column="1"
+				Text="{ Binding Body }" 
+				FontSize="{ artina:OnOrientationDouble 
+					PortraitPhone=12,
+					LandscapePhone=12,
+					PortraitTablet=14,
+					LandscapeTablet=14 }"
+				HeightRequest="{ artina:OnOrientationDouble 
+					PortraitPhone=50,
+					LandscapePhone=50,
+					PortraitTablet=5,
+					LandscapeTablet=70 }"/>
+
+			<!-- FOOTER -->
+			<StackLayout
+				Grid.Row="2" 
+				Grid.Column="1"
+				VerticalOptions="End"
+				Orientation="Horizontal">
+				<Label
+					Text="{ x:Static local:GrialShapesFont.Event }" 
+					Style="{ StaticResource FontIcon }"
+					FontSize="{ artina:OnOrientationDouble 
+						PortraitPhone=12,
+						LandscapePhone=12,
+						PortraitTablet=14,
+						LandscapeTablet=14 }"
+					VerticalOptions="Center"
+					TextColor="{DynamicResource AccentColor}" />	
+				<Label
+					Text="{ Binding When }" 
+					Opacity=".7"
+					FontSize="{ artina:OnOrientationDouble 
+						PortraitPhone=12,
+						LandscapePhone=12,
+						PortraitTablet=14,
+						LandscapeTablet=14 }" />
+			</StackLayout>
+			
+		</Grid>
+	</ContentView.Content>
+	
+</ContentView>

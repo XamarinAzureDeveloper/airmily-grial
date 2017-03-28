@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.DashboardScrollablePage" 
+	Title="Dashboard Scrollable"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+>
+	<ScrollView 
+		Orientation="Both" 
+		Padding="20">
+		
+		<Grid
+			ColumnSpacing="0">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition 
+					Height="Auto" />
+			</Grid.RowDefinitions>
+			
+			<artina:GridOptionsView 
+				Grid.Column="0"
+				HorizontalOptions="Start"
+				Margin="0"
+				Padding="10,10,10,0"
+				ColumnSpacing="10" 
+				RowSpacing="10" 
+				ColumnCount="2"
+				ItemsSource="{ Binding ItemsReverse }">
+				<artina:GridOptionsView.ItemTemplate>
+					<DataTemplate>
+						<local:DashboardItemTemplate
+							ShowBackgroundImage="false"
+							ShowBackgroundColor="true"
+							ShowiconColoredCircleBackground="true"
+							WidthRequest="100"
+							HeightRequest="100"
+							TextColor="{ DynamicResource OverImageTextColor }"/>
+					</DataTemplate>
+				</artina:GridOptionsView.ItemTemplate>
+			</artina:GridOptionsView>
+
+			<artina:GridOptionsView 
+				Grid.Column="1" 
+				HorizontalOptions="Start"
+				Margin="0"
+				Padding="0,10,10,10"
+				ColumnSpacing="10" 
+				RowSpacing="10" 
+				RowCount="2"
+				ItemsSource="{ Binding Items }">
+				<artina:GridOptionsView.ItemTemplate>
+					<DataTemplate>
+						<local:DashboardItemTemplate
+							ShowBackgroundImage="true"
+							ShowBackgroundColor="true"
+							ShowiconColoredCircleBackground="true"
+							WidthRequest="200"
+							HeightRequest="200"
+							TextColor="{ DynamicResource OverImageTextColor }"/>
+					</DataTemplate>
+				</artina:GridOptionsView.ItemTemplate>
+			</artina:GridOptionsView>
+			
+		</Grid>
+	
+	</ScrollView>
+
+</ContentPage>

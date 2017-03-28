@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.NotificationsListItemTemplate"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily">
+
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<local:NotificationIconConverter x:Key="IconConverter"/>
+
+			<local:NotificationColorConverter x:Key="ColorConverter"/>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	
+	<ContentView.Content>
+
+		<!-- MAIN WRAPPER-->
+		<StackLayout 
+			Spacing="0" 
+			Padding="0" 
+			HorizontalOptions="Fill" >
+
+			<!-- MAIN GRID -->
+			<Grid
+				Padding="20,0,15,0" 
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="FillAndExpand"
+				ColumnSpacing="10">
+				
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="40"/>
+				</Grid.ColumnDefinitions>
+
+				<!-- SHAPE BACKGROUND -->
+				<Label
+					Grid.Column="0"
+					Style="{StaticResource NotificationItemTemplateShape}" 
+					HorizontalTextAlignment="Center"
+					Text="{Binding Shape}"
+					TextColor="{Binding Type, Converter={StaticResource ColorConverter}}"
+					VerticalOptions="Center"
+					HorizontalOptions="Center"
+				/>
+
+				<!-- ICON -->
+				<Label
+					Grid.Column="0"
+					Text="{Binding Type, Converter={StaticResource IconConverter}}"
+					FontSize="{ artina:OnOrientationDouble
+						PortraitPhone=16,
+						LandscapePhone=16,
+						PortraitTablet=22,
+						LandscapeTablet=22 }"
+					Style="{StaticResource FontIcon}"
+					HorizontalTextAlignment="Center"
+					TextColor="{ DynamicResource InverseTextColor }"
+					VerticalOptions="Center"
+					HorizontalOptions="Center"
+				/>
+
+				<!-- NOTIFICATION -->
+				<StackLayout
+					Grid.Column="1"
+					Spacing="0"
+					Orientation="Vertical"
+					VerticalOptions="Center"
+					HorizontalOptions="Start">
+					
+					<Label
+						FontAttributes="Bold"
+						Text="{ Binding Title }" 
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="Center" />
+
+					<Label 
+						FontSize="14"
+						FontAttributes="Italic"
+						Text="{ Binding Description }" 
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="Center" />
+
+				</StackLayout>
+
+				<!-- CHEVRON -->
+				<Label 
+					Grid.Column="2"
+					WidthRequest="20"
+					HorizontalOptions="End"
+					Text="{ x:Static local:GrialShapesFont.ArrowRight }" 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Style="{ DynamicResource MainMenuRightChevronStyle }" />
+			
+			</Grid>
+
+			<!-- BOTTOM SEPARATOR LINE -->
+			<BoxView 
+				BackgroundColor="{ DynamicResource BaseTextColor }" 
+				HeightRequest="0.5"
+				VerticalOptions="End"
+				Opacity=".5" />
+
+		</StackLayout>
+
+	</ContentView.Content>
+</ContentView>

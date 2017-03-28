@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.DashboardMultipleTilesPage"
+	Title = "Dashboard Multiple Tiles"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:DashboardTemplateSelector x:Key="Selector">
+				
+				<local:DashboardTemplateSelector.FirstTemplate>
+					<DataTemplate>
+						
+						<local:DashboardVariantItemTemplate 
+							ShowBackgroundImage="true"
+							ShowBackgroundColor="true"
+							ShowiconColoredCircleBackground="false"
+							TextColor="{ DynamicResource DashboardIconColor }"
+							WidthRequest="145"
+							HeightRequest="145"/>
+					</DataTemplate>
+				</local:DashboardTemplateSelector.FirstTemplate>
+				
+				<local:DashboardTemplateSelector.SecondTemplate>
+					<DataTemplate>
+						<local:DashboardAppNotificationItemTemplate
+							WidthRequest="145"
+							HeightRequest="145"/>
+					</DataTemplate>
+				</local:DashboardTemplateSelector.SecondTemplate>
+				
+			</local:DashboardTemplateSelector>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ScrollView Orientation="Both">
+		<artina:GridOptionsView 
+			WidthRequest="320"
+			Margin="0"
+			Padding="10"
+			ColumnSpacing="10" 
+			RowSpacing="10" 
+			ColumnCount="2"
+			ItemsSource="{Binding DashboardMutipleTilesList}"
+			ItemTemplate="{DynamicResource Selector}" />
+	</ScrollView>
+</ContentPage>

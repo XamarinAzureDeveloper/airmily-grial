@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	
+	x:Class="airmily.DashboardCardItemTemplate">
+
+	<Grid
+		Margin="2"
+		BackgroundColor="{ Binding BackgroundColor }"
+		Style="{ StaticResource CardViewStyle }"
+		ColumnSpacing="0" 
+		RowSpacing="0" 
+		Padding="0">
+		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="75*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="40*" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="10" />
+		</Grid.RowDefinitions>
+
+		<!-- Card Background image -->
+		<ffimageloading:CachedImage 
+			FadeAnimationEnabled="true"
+			DownsampleUseDipUnits="true"
+			DownsampleHeight="140"
+			Source="{ Binding BackgroundImage }"
+			Aspect="AspectFill"
+			HeightRequest="140"
+		/>
+		<!-- Avatar -->
+		<artina:CircleImage 
+			BorderColor="{Binding BackgroundColor}"
+			Grid.RowSpan="1"
+			Grid.Row="1"
+			TranslationY="{ 
+				artina:OnOrientationDouble 
+					Default=-18,
+					PortraitTablet=-30,
+					LandscapeTablet=-30 
+				}"
+
+			TranslationX="20"
+			Source="{ Binding Avatar }" 
+			HorizontalOptions="Start"
+			HeightRequest="{ 
+				artina:OnOrientationDouble 
+					Default=46,	
+					PortraitTablet=60,
+					LandscapeTablet=60 
+				}"
+			WidthRequest="{ 
+				artina:OnOrientationDouble 
+					Default=46,
+					PortraitTablet=60,
+					LandscapeTablet=60 
+				}"
+			/>
+
+		<StackLayout 
+			Grid.Row="2"
+			Spacing="0">
+			<!-- Card title -->
+			<Label 
+				Margin="20,0"
+				TextColor="{ DynamicResource InverseTextColor }"
+				Text="{ Binding Title }"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=16,
+					PortraitTablet=20,
+					LandscapeTablet=20 }"/>
+
+			<!-- Author -->
+			<Label
+				Grid.Row="3"
+				Margin="20,0"
+				TranslationY="0"
+				Text="{ Binding Author }"
+				TextColor="{ DynamicResource InverseTextColor }"
+				Opacity=".5"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=14,
+					PortraitTablet=16,
+					LandscapeTablet=16 }"/>	
+		
+		</StackLayout>
+
+		<!-- SECTION -->
+		<local:RoundedLabel 
+			Grid.Row="0"
+			Grid.Column="0"
+			Margin="10"
+			Style="{ StaticResource TagLabelStyle }"
+			HorizontalOptions="End"
+			VerticalOptions="Start"/>
+
+		<StackLayout
+			Grid.Row="3"
+			Margin="0,0,15,0"
+			Orientation="Horizontal"
+			VerticalOptions="Center"
+			HorizontalOptions="End">
+			
+			<Label
+				Text="{ x:Static local:GrialShapesFont.Eye }"
+				Style="{ StaticResource FontIcon }"
+				TextColor="{ DynamicResource OverImageTextColor }"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=15,
+					PortraitTablet=20,
+					LandscapeTablet=20 }"
+				HorizontalTextAlignment="End"
+				VerticalTextAlignment="Center"/>
+			<Label
+				Text="223"
+				TextColor="{ DynamicResource OverImageTextColor }"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=13,
+					PortraitTablet=16,
+					LandscapeTablet=16 }"
+				HorizontalTextAlignment="End"
+				VerticalTextAlignment="Center"/>
+		</StackLayout>
+
+				
+	</Grid>
+
+	<ContentView.GestureRecognizers>
+		<TapGestureRecognizer Tapped="OnCardTapped" />
+	</ContentView.GestureRecognizers>
+	
+</ContentView>

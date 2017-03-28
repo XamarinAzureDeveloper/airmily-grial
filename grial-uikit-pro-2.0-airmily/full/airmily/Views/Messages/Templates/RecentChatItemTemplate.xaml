@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.RecentChatItemTemplate"
+	>
+
+	<ContentView.Content>
+		<!-- MAIN WRAPPER-->
+		<StackLayout 
+			Spacing="0" 
+			Padding="0" 
+			HorizontalOptions="Fill"
+			BackgroundColor="{ DynamicResource BasePageColor }" >
+
+			<!-- MAIN GRID -->
+			<Grid
+				Padding="20,0" 
+				ColumnSpacing="10"
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions="FillAndExpand">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="{ artina:OnOrientationDouble 
+						Default=45,
+						PortraitTablet=55,
+						LandscapeTablet=55 }"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="60"/>
+				</Grid.ColumnDefinitions>
+
+				<!-- CONTACT IMAGE 
+				BorderColor="{ StaticResource OkColor }"
+					BorderThickness="3"
+				-->
+				<artina:CircleImage
+					Grid.Column="0"
+					Source="{ Binding From.Avatar }" 
+					BorderColor="{ DynamicResource AccentColor }"
+					BorderThickness="2"
+					Aspect="AspectFill"
+					WidthRequest="{ artina:OnOrientationDouble 
+						Default=45,
+						PortraitTablet=55,
+						LandscapeTablet=55 }" 
+					HeightRequest="{ artina:OnOrientationDouble 
+						Default=45,
+						PortraitTablet=55,
+						LandscapeTablet=55 }"
+					VerticalOptions="Center" />
+
+				<!-- NOTIFICATION -->
+				<StackLayout
+					Grid.Column="1"
+					Spacing="{ artina:OnOrientationDouble 
+						Default=0,
+						PortraitTablet=2,
+						LandscapeTablet=2 }"
+					Orientation="Vertical"
+					VerticalOptions="Center"
+					HorizontalOptions="Start">
+					
+					<Label
+						FontAttributes="Bold"
+						Text="{ Binding From.Name }" 
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="Center" 
+						FontSize="18"/>
+
+					<StackLayout 
+						Orientation="Horizontal"
+						Spacing="6">
+						
+						<Label 
+							FontSize="16"
+							HorizontalTextAlignment="End"
+							VerticalOptions="Center"
+							IsVisible="{ Binding IsRead }"
+							TextColor="{ DynamicResource OkColor }"
+							Text="{ x:Static local:GrialShapesFont.Check }"
+							Style="{ DynamicResource FontIcon }"/>
+							
+						<Label 
+							FontSize="14"
+							FontAttributes="Italic"
+							Text="{ Binding Body }" 
+							HorizontalOptions="FillAndExpand"
+							VerticalOptions="Center" 
+							LineBreakMode="TailTruncation"
+						/>
+					</StackLayout>
+				</StackLayout>
+
+				<!-- TIME DELIVER -->
+				<StackLayout 
+					Grid.Column="2" 
+					VerticalOptions="Center" 
+					Orientation="Horizontal">
+					
+					<Label 
+						Text="{ Binding When }" 
+						FontSize="14"/>
+						
+					<Label 
+						FontSize="14"
+						HorizontalTextAlignment="End"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local:GrialShapesFont.QueryBuilder }" 
+						TextColor="{ DynamicResource OkColor }"
+						Style="{ DynamicResource FontIcon }"/>
+					
+				</StackLayout>
+
+			</Grid>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>

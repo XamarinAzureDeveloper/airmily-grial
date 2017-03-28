@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	x:Class="airmily.ProductGridItemTemplate"
+	>
+
+	<StackLayout
+		Spacing="0">
+
+		<ffimageloading:CachedImage 
+			FadeAnimationEnabled="true" 
+			Source="{Binding Image}" 
+			HeightRequest="{Binding ThumbnailHeight}" 
+			Aspect="AspectFill"/>
+
+		<StackLayout 
+			Padding="0,10,0,10"
+			Spacing="0">
+			<Label 
+				Text="{Binding Manufacturer, StringFormat='BY {0:F0}'}}"
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=9,
+					LandscapePhone=9,
+					PortraitTablet=10,
+					LandscapeTablet=10 }"
+				HorizontalOptions="Fill"
+				TextColor="{ DynamicResource AccentColor }"/>
+
+			<Label 
+				Text="{Binding Name}"
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=16,
+					LandscapePhone=16,
+					PortraitTablet=18,
+					LandscapeTablet=18 }"
+				FontAttributes="Bold"
+				HorizontalOptions="Fill"
+				TextColor="{DynamicResource BaseTextColor}"/>
+					
+			<Label 
+				Text="{Binding Price}"
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=15,
+					LandscapePhone=15,
+					PortraitTablet=17,
+					LandscapeTablet=17 }"
+				HorizontalOptions="Fill"
+				TextColor="{DynamicResource BaseTextColor}"/>
+		</StackLayout>
+
+	</StackLayout>
+	 
+</ContentView>

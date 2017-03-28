@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ProductsCatalogItemTemplate"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	
+	
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	Padding="10"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+
+	<Grid
+		RowSpacing="1"
+		VerticalOptions="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+
+
+		<!-- PRODUCT -->
+		<Grid
+			Grid.Row="0"
+			Grid.Column="0"
+			RowSpacing="10" 
+			ColumnSpacing="10" 
+			Padding="10,10,20,10" 
+			BackgroundColor="{ DynamicResource BasePageColor }">
+			
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<!-- IMAGE -->
+			<ffimageloading:CachedImage 
+				Grid.Row="0" 
+				Grid.RowSpan="3"
+				FadeAnimationEnabled="true" 
+				Source="{ Binding Image }" 
+				Aspect="AspectFill"
+				HeightRequest="100"/>
+			
+			<!-- PRODUCT NAME -->
+			<Label 
+				Grid.Row="0"
+				Grid.Column="1"
+				Text="{ Binding Name }" 
+				FontAttributes="Bold" 
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=18,
+					LandscapePhone=18,
+					PortraitTablet=22,
+					LandscapeTablet=22 }"
+				LineBreakMode="TailTruncation"
+				TextColor="{ DynamicResource BaseTextColor }"
+				VerticalTextAlignment="Center" 
+				HorizontalTextAlignment="Start"/>
+
+			<!-- PRICE -->
+			<!--<Label 
+				Grid.Row="1" 
+				Grid.Column="1"
+				Text="{ Binding Price }"
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=20,
+					LandscapePhone=20,
+					PortraitTablet=26,
+					LandscapeTablet=26 }"
+				TextColor="{ DynamicResource AccentColor }"
+				VerticalTextAlignment="Center" 
+				HorizontalTextAlignment="Start"/>-->
+
+			<!-- DESCRIPTION -->
+			<Label
+				Grid.Row="1"
+				Grid.Column="1"
+				Text="{Binding Description}" 
+				HorizontalOptions="Fill"
+				TextColor="{ DynamicResource BaseTextColor }"
+				FontSize="{ artina:OnOrientationDouble
+					PortraitPhone=12,
+					LandscapePhone=12,
+					PortraitTablet=16,
+					LandscapeTablet=16 }"/>
+			
+			<local:Rating
+				Grid.Row="2" 
+				Grid.Column="1"
+				VerticalOptions="Center" 
+				HorizontalOptions="Start" 
+				Max="5" 
+				Value="2"/>
+		</Grid>
+
+		<!-- BUTTONS -->
+		<Grid
+			Grid.Row="1"
+			ColumnSpacing="1"
+			BackgroundColor="{ DynamicResource BasePageColor }">
+			
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<StackLayout 
+				Grid.Row="0"
+				Grid.Column="0"
+				Padding="15,0,0,0"
+				Orientation="Horizontal"
+				HorizontalOptions="Start"
+				VerticalOptions="Center"
+				Spacing="3">
+				<Label
+					Text="{ x:Static local:GrialShapesFont.FavoriteBorder } " 
+					TextColor="{ DynamicResource AccentColor }" 
+					FontFamily="{ StaticResource IconsFontFamily }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+				<Label
+					Text=" Save" 
+					TextColor="{ DynamicResource BaseTextColor }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+			</StackLayout>
+
+			<StackLayout
+				Grid.Row="0"
+				Grid.Column="1" 
+				Orientation="Horizontal"
+				HorizontalOptions="Center"
+				VerticalOptions="Center"
+				Spacing="3">
+				<Label
+					Grid.Column="0"
+					Text="{ x:Static local:GrialShapesFont.Copy } " 
+					TextColor="{ DynamicResource AccentColor }" 
+					FontFamily="{ StaticResource IconsFontFamily }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+				<Label 
+					Grid.Column="1"
+					Text=" Compare" 
+					TextColor="{ DynamicResource BaseTextColor }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+			</StackLayout>
+
+			<StackLayout
+				Grid.Row="0"
+				Grid.Column="2"
+				Padding="0,0,15,0"
+				Orientation="Horizontal"
+				HorizontalOptions="End"
+				VerticalOptions="Center"
+				Spacing="3">
+				<Label
+					Grid.Column="0"
+					VerticalTextAlignment="Center" 
+					HorizontalTextAlignment="End"
+					Text="{ x:Static local:GrialShapesFont.Share } " 
+					TextColor="{ DynamicResource AccentColor }" 
+					FontFamily="{ StaticResource IconsFontFamily }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+				<Label 
+					Grid.Column="1"
+					VerticalTextAlignment="Center" 
+					HorizontalTextAlignment="Start"
+					Text=" Share" 
+					TextColor="{ DynamicResource BaseTextColor }">
+					<Label.FontSize>
+						<OnIdiom x:TypeArguments="x:Double" 
+							Phone="18" 
+							Tablet="22" />
+					</Label.FontSize>
+				</Label>
+			</StackLayout>
+			<!--<Label
+				Grid.Row="0"
+				Grid.Column="1" 
+				VerticalTextAlignment="Center" 
+				HorizontalTextAlignment="Center">
+				<Label.FormattedText>
+					<FormattedString>
+						<FormattedString.Spans>
+							<Span 
+								Text="{ x:Static local:GrialShapesFont.Copy }" 
+								ForegroundColor="{DynamicResource AccentColor}" 
+								FontFamily="{ StaticResource IconsFontFamily }">
+								<Span.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+										Phone="18" 
+										Tablet="22" />
+								</Span.FontSize>
+							</Span>
+							<Span 
+								Text=" Compare" 
+								ForegroundColor="{ DynamicResource BaseTextColor }">
+								<Span.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+										Phone="18" 
+										Tablet="22" />
+								</Span.FontSize>
+							</Span>
+						</FormattedString.Spans>
+					</FormattedString>
+				</Label.FormattedText>
+			</Label>-->
+
+			<!-- SEPARATOR 
+			<BoxView
+				Grid.Column="1"
+				BackgroundColor="{ DynamicResource ListViewSeparatorColor }"
+				WidthRequest="1" 
+				HorizontalOptions="End" />-->
+			
+			<!--<Label
+				Grid.Row="0"
+				Grid.Column="2" 
+				VerticalTextAlignment="Center" 
+				HorizontalTextAlignment="Center">
+				<Label.FormattedText>
+					<FormattedString>
+						<FormattedString.Spans>
+							<Span 
+								Text="{ x:Static local:GrialShapesFont.Share } " 
+								ForegroundColor="{DynamicResource AccentColor}" 
+								FontFamily="{ StaticResource IconsFontFamily }">
+								<Span.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+										Phone="18" 
+										Tablet="22" />
+								</Span.FontSize>
+							</Span>
+							<Span 
+								Text=" Share" 
+								ForegroundColor="{ DynamicResource BaseTextColor }">
+								<Span.FontSize>
+									<OnIdiom x:TypeArguments="x:Double" 
+										Phone="18" 
+										Tablet="22" />
+								</Span.FontSize>
+							</Span>
+						</FormattedString.Spans>
+					</FormattedString>
+				</Label.FormattedText>
+			</Label>-->
+
+		</Grid>
+			
+	</Grid>
+
+</ContentView>
+

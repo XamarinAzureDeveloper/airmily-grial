@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.SocialHeaderStyleTemplate">
+
+	<StackLayout
+			Orientation="Horizontal">
+		<Label
+			x:Name="HeaderIcon" 
+			FontSize="18"
+			Style="{ StaticResource SocialHeaderStyle }"
+			Text="{ x:Static local:GrialShapesFont.Person }"
+			FontFamily="{ StaticResource IconsFontFamily }"
+			TranslationY="1"/>
+		<Label
+			x:Name="HeaderLabel"
+			Style="{ StaticResource SocialHeaderStyle }"
+			Text="&#032; FRIENDS"/>
+	</StackLayout>
+
+	
+
+
+</ContentView>

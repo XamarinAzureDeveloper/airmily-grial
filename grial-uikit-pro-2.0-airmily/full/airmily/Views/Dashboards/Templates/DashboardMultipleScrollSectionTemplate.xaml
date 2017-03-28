@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.DashboardMultipleScrollSectionTemplate"
+	xmlns:ctlRep="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Repeater" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily">
+	
+	<ContentView.GestureRecognizers>
+		<TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+	</ContentView.GestureRecognizers>
+
+	<ContentView.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="46" />
+			
+				<RowDefinition>
+					<RowDefinition.Height>
+						<OnIdiom 
+							x:TypeArguments="GridLength"
+							Phone="134"
+						Tablet="268" />
+					</RowDefinition.Height>
+				</RowDefinition>
+			</Grid.RowDefinitions>
+
+
+			
+			<Label Grid.Row="0" Text="{ Binding Title }"
+				Style="{ StaticResource DashboardMultipleScrollItemTitleStyle }" />
+
+			<ctlRep:Repeater Grid.Row="1" 
+				Padding="10,0"
+				ItemsSource="{ Binding Content }" 
+				ScrollPosition="{ Binding Scroll, Mode=TwoWay }"
+				Spacing="10">
+				<ctlRep:Repeater.ItemSize>
+					<OnIdiom 
+						x:TypeArguments="x:Double"
+						Phone="81"
+						Tablet="162"/>
+				</ctlRep:Repeater.ItemSize>
+				<ctlRep:Repeater.ItemTemplate>
+					<DataTemplate>
+						<local:DashboardMultipleScrollItemTemplate  />
+					</DataTemplate>
+				</ctlRep:Repeater.ItemTemplate>
+			</ctlRep:Repeater>
+		</Grid>
+	</ContentView.Content>
+</ContentView>

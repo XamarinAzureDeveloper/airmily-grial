@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="airmily.SignUpPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	
+	Title="Sign Up">
+	<!--MAIN CONTAINER-->
+	<Grid>
+		<!---BACKGROUND IMAGE-->
+	 	<Image Style="{StaticResource SignUpBackgroundImage}"/>
+
+		<ScrollView
+			Padding="{ DynamicResource MainWrapperPadding }">
+
+			<!-- MAIN CONTAINER -->
+			<Grid
+			ColumnSpacing="0" 
+			RowSpacing="0" 
+			HorizontalOptions="Fill"
+			VerticalOptions="FillAndExpand" >
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="120" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<!-- LOGO -->
+			<Grid 
+				Grid.Row="0" 
+				WidthRequest="60"
+				HeightRequest="60"
+				Margin="20"
+				VerticalOptions="End"
+				HorizontalOptions="Start">
+					
+				<BoxView
+					BackgroundColor="{DynamicResource AccentColor}"/>	
+				<Label
+					TextColor="{ DynamicResource OverImageTextColor }"
+					FontSize="42"
+					Text="{ x:Static local:GrialShapesFont.LogoGrial }" 
+					Style="{StaticResource FontIcon}"
+					HorizontalTextAlignment="Center"
+					VerticalTextAlignment="Center"/>
+					</Grid>
+
+
+			<!-- CLOSE ICON -->
+			<Label 
+				Style="{DynamicResource IconCloseLabelStyle}" 
+				HorizontalOptions="End"
+				VerticalOptions="Start"
+				TranslationX="-20"
+				TranslationY="35"
+				Grid.Row="0">
+				<Label.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+				</Label.GestureRecognizers>
+			</Label>
+
+			<!--CLAIM TEXT-->
+			<StackLayout
+				Grid.Row="1"
+				Spacing="10"
+				Padding="20,10"
+				Orientation="Vertical"
+				VerticalOptions="Center">
+				<Label
+					LineBreakMode="WordWrap"
+					Text="Register now"
+					TextColor="{ DynamicResource OverImageTextColor }"
+					VerticalTextAlignment="Center"
+					FontAttributes="Bold"
+					AbsoluteLayout.LayoutFlags="All">
+				       <Label.FontSize> 
+							<OnIdiom x:TypeArguments="x:Double"
+									 Phone="26"
+									 Tablet="36"/>
+								</Label.FontSize>
+						</Label>
+					<Label
+						LineBreakMode="WordWrap"
+						Text="Register now and enjoy the&#x0a;pleasures of the demo."
+						TextColor="{ DynamicResource OverImageTextColor }"
+						VerticalTextAlignment="Center"
+						FontSize="36"
+						AbsoluteLayout.LayoutFlags="All">
+				           <Label.FontSize> 
+								<OnIdiom x:TypeArguments="x:Double"
+									     Phone="17"
+									     Tablet="27"/>
+							</Label.FontSize>
+						</Label>
+						
+				<BoxView 
+					Style="{StaticResource BrandNameOrnamentStyle}"
+					BackgroundColor="{DynamicResource OverImageTextColor}"/>
+						
+			</StackLayout>
+
+			<!---FIELDS CONTAINER-->
+			<Grid
+				Padding="40,0"
+				VerticalOptions="CenterAndExpand"
+				HeightRequest="260"
+				Grid.Row="2">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+					<StackLayout 
+						Grid.Row="0"
+						VerticalOptions="Start">
+						<!---EMAIL FIELD--> 
+						<Entry 
+							Placeholder="E-mail"
+							Style="{DynamicResource ArtinaLoginEntryStyle}">
+
+							<Entry.Behaviors>
+								<artina:EmailValidatorBehavior x:Name="emailValidator" />
+							</Entry.Behaviors>
+						</Entry>
+
+						<Label
+							Text=" Please enter a valid e-mail " IsVisible="false"
+							Style="{DynamicResource ValidationEntryErrorStyle}">
+
+							<Label.Triggers>
+								<DataTrigger TargetType="Label"
+									Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
+									Value="false">
+									<Setter Property="IsVisible" Value="true" />
+								</DataTrigger> 
+							</Label.Triggers>
+						</Label>
+					</StackLayout>
+
+					<!---USERNAME FIELD-->
+					<Entry 
+						Grid.Row="1"	
+						Placeholder="Username"
+						Style="{DynamicResource ArtinaLoginEntryStyle}" 
+						VerticalOptions="StartAndExpand" />
+
+
+					<!---PASSWORD FIELD-->
+					<Entry x:Name="passwordEntry"
+						Grid.Row="2"
+						Placeholder="Password"
+						IsPassword="true"
+						Style="{DynamicResource ArtinaLoginEntryStyle}" 
+						VerticalOptions="StartAndExpand" />
+
+					<StackLayout
+						Grid.Row="3"
+						VerticalOptions="StartAndExpand" >
+
+						<!---PASSWORD REPEAT FIELD-->
+						<Entry 
+							Placeholder="Repeat Password" 
+							IsPassword="true"
+							Style="{DynamicResource ArtinaLoginEntryStyle}"
+							>
+							<Entry.Behaviors>
+								<artina:TextMatchValidatorBehavior x:Name="passwordValidator" 
+									TextToMatch="{Binding Source={x:Reference passwordEntry}, Path=Text}"/>
+							</Entry.Behaviors>
+						</Entry>
+
+						<Label
+							Text=" Passwords do not match " IsVisible="false"
+							Style="{DynamicResource ValidationEntryErrorStyle}"
+							>
+
+							<Label.Triggers>
+								<DataTrigger 
+									TargetType="Label"
+									Binding="{Binding Source={x:Reference passwordValidator}, Path=IsValid}"
+									Value="false">
+									<Setter Property="IsVisible" Value="true" />
+								</DataTrigger> 
+							</Label.Triggers>
+
+						</Label>
+					</StackLayout>
+			</Grid>
+
+			<!-- FOOTER -->
+			<StackLayout 
+				x:Name="loginStack" 
+				HorizontalOptions="Fill"
+				VerticalOptions="End" 
+				Padding="20, 0"
+				Grid.Row="3" >
+
+				<artina:Button
+					Style="{DynamicResource PrimaryActionButtonStyle}"
+					VerticalOptions="End" 
+					Text="Sign Up!" 
+					WidthRequest="{ artina:OnOrientationDouble
+						LandscapePhone=200,
+						LandscapeTablet=400 }"
+					HorizontalOptions="{ artina:OnOrientationLayoutOptions
+						PortraitPhone=Fill,
+						LandscapePhone=Center,
+						PortraitTablet=Fill,
+						LandscapeTablet=Center }"/>
+
+				<artina:Button 
+					Style="{DynamicResource TransparentButtonStyle}" 
+					VerticalOptions="End" 
+					Text="Already a user? Login now"
+					WidthRequest="{ artina:OnOrientationDouble
+						LandscapePhone=200,
+						LandscapeTablet=400 }"
+					HorizontalOptions="{ artina:OnOrientationLayoutOptions
+						PortraitPhone=Fill,
+						LandscapePhone=Center,
+						PortraitTablet=Fill,
+						LandscapeTablet=Center }"/>
+
+			</StackLayout>
+
+		</Grid>
+
+	</ScrollView>
+	</Grid>
+</ContentPage>

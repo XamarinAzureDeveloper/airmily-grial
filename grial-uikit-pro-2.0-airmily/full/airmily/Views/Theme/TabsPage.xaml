@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.TabsPage"
+	Title="Tabbed Page"
+	BackgroundColor="{DynamicResource BaseTabbedPageColor}">
+
+	<TabbedPage.Children>
+
+		<ContentPage Title="Light" Icon="tabs0_icon.png">
+			<ContentPage.Content>
+				<Grid>
+					<Image
+						Grid.Row="0"
+						VerticalOptions="Center"
+						HorizontalOptions="Center"
+						Source="light_theme_thumbnail.png"/>
+				</Grid>
+			</ContentPage.Content>
+		</ContentPage>
+
+		<ContentPage Title="Dark" Icon="tabs0_icon.png">
+			<ContentPage.Content>
+				<Grid>
+					<Image
+						Grid.Row="0"
+						VerticalOptions="Center"
+						HorizontalOptions="Center"
+						Source="dark_theme_thumbnail.png"/>
+				</Grid>
+			</ContentPage.Content>
+		</ContentPage>
+
+		<ContentPage Title="Enterprise" Icon="tabs0_icon.png">
+			<ContentPage.Content>
+				<Grid>
+					<Image
+						Grid.Row="0"
+						VerticalOptions="Center"
+						HorizontalOptions="Center"
+						Source="corporate_theme_thumbnail.png"/>
+				</Grid>
+			</ContentPage.Content>
+		</ContentPage>
+
+	</TabbedPage.Children>
+
+</TabbedPage>

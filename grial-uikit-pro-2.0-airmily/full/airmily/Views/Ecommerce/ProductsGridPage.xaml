@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ProductsGridPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	Title="Products Grid"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+
+	<Grid
+		RowSpacing="0"
+		Padding="0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="{ artina:OnOrientationDouble
+				PortraitPhone=70,
+				LandscapePhone=70,
+				PortraitTablet=100,
+				LandscapeTablet=100 }" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid
+			Grid.Row="0"
+			RowSpacing="0"
+			Padding="0"
+			x:Name="EcommerceProductGridBanner"
+			VerticalOptions="Center"
+			Style="{StaticResource EcommerceProductGridBannerStyle}">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="60*" />
+				<RowDefinition Height="40*" />
+			</Grid.RowDefinitions>
+
+
+			<Label
+				Grid.Row="0"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=20,
+					PortraitTablet=30,
+					LandscapeTablet=30 }"
+				Text="25% discount"
+				TranslationY="2"
+				TextColor="{ DynamicResource EcommercePromoTextColor }"
+				HorizontalTextAlignment="Center"
+				VerticalTextAlignment="Center"/>
+
+			<Label
+				Grid.Row="1"
+				FontSize="{ artina:OnOrientationDouble 
+					Default=14,
+					PortraitTablet=20,
+					LandscapeTablet=20 }"
+				TranslationY="-5"
+				Text="Enjoy it now!" 
+				TextColor="{ DynamicResource EcommercePromoTextColor }"
+				HorizontalTextAlignment="Center"
+				VerticalTextAlignment="Center"/>
+		</Grid>
+		
+		<ScrollView
+			Grid.Row="1">
+
+			<Grid 
+				Padding="10" 
+				ColumnSpacing="10" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<!---Left Column Content -->
+				<StackLayout 
+					x:Name="LeftColumn"
+					Grid.Column="0">
+				</StackLayout>
+
+				<!-- Right Column Content-->
+				<StackLayout 
+					x:Name="RightColumn"
+					Grid.Column="1">
+				</StackLayout>
+
+			</Grid>
+		</ScrollView>
+		
+	</Grid>
+</ContentPage>

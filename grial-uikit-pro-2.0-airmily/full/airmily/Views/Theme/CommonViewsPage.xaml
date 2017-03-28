@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.CommonViewsPage"
+	BackgroundColor="{DynamicResource BasePageColor}"
+	Title="Grial Common Views">
+	
+	<ScrollView>
+		<StackLayout Padding="20">
+			
+			<!-- CustomNavBar -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.WebAsset }" 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0" 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" CustomNavBar" />
+			</AbsoluteLayout>
+			
+			<local:CustomNavBar />
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+
+
+
+			<!-- CircleIcon -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Circle } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" CircleIcon" />
+			</AbsoluteLayout>
+			
+			<local:CircleIcon HeightRequest="64" />
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+
+
+
+			<!-- Badge -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Circle } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0" 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" Badge" />
+			</AbsoluteLayout>
+			
+			<local:Badge 
+				BadgeText="7+" 
+				BadgeTextColor="#FFF" 
+				BadgeBackgroundColor="#F00"/>
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+
+
+
+
+			<!-- BrandBlock -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.LogoGrial } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" BrandBlock" />
+			</AbsoluteLayout>
+			
+			<StackLayout BackgroundColor="{ DynamicResource MainMenuBackgroundColor }">
+				<local:BrandBlock />
+			</StackLayout>
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+			
+			<!-- RoundedLabel -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Label }"
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" RoundedLabel" />
+			</AbsoluteLayout>
+			
+			<local:RoundedLabel
+				HorizontalOptions="Start"
+				RoundedLabelText="Grial Rounded Label Sample"
+			/>
+			
+		</StackLayout>
+	</ScrollView>
+
+</ContentPage>

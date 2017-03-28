@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.ChatTimelinePage"
+	Title="Chat Timeline"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Padding="{ DynamicResource MainWrapperPadding }">
+	
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:ChatTemplateSelector x:Key="Selector">
+				
+				<local:ChatTemplateSelector.IncomingDataTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<local:ChatTimelineIncomingItemTemplate />
+						</ViewCell>
+					</DataTemplate>
+				</local:ChatTemplateSelector.IncomingDataTemplate>
+				
+				<local:ChatTemplateSelector.OutgoingDataTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<local:ChatTimelineOutgoingItemTemplate />
+						</ViewCell>
+					</DataTemplate>
+				</local:ChatTemplateSelector.OutgoingDataTemplate>
+				
+			</local:ChatTemplateSelector>
+			
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+		
+		<ListView
+			
+			CachingStrategy="RecycleElement"
+			ItemsSource="{ Binding . }"  
+			SeparatorVisibility="None"
+			HasUnevenRows="true"
+			ItemTemplate="{ StaticResource Selector }">
+		</ListView>
+	</ContentPage.Content>
+	
+</ContentPage>

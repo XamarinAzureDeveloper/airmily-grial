@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<controls:ContentPageShakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                            xmlns:controls="clr-namespace:airmily.Views.Controls;assembly=airmily"
+                            xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+                            xmlns:behaviors="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
+                            prism:ViewModelLocator.AutowireViewModel="True"
+                            x:Class="airmily.Views.ViewImagesPage"
+                            x:Name="Root"
+                            BackgroundColor="{StaticResource BackgroundColour}">
+
+	<!--<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Refresh" Command="{Binding RefreshCmd}" />
+	</ContentPage.ToolbarItems>-->
+
+	<AbsoluteLayout>
+		<StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+			<controls:NavigationBarView
+							Title="{Binding Title}" IsBackButton="{Binding IsBackButton}" BackCmd="{Binding BackCmd}"
+							OtherText="{Binding OtherText}" OtherCmd="{Binding OtherCmd}"/>
+			
+			<!--Transaction Information-->
+			<Frame HasShadow="False" BackgroundColor="{StaticResource BrandColorDark}"
+				   BindingContext="{Binding CurrentTransaction}">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="80" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<Label Text="{Binding Main}" TextColor="White" HorizontalTextAlignment="Start" Grid.Column="0"
+						   Grid.Row="0" />
+					<Label Text="{Binding Value}" TextColor="White" HorizontalTextAlignment="End" Grid.Column="1"
+						   Grid.Row="0" Grid.RowSpan="2" />
+					<Label Text="{Binding Detail}" TextColor="White" HorizontalTextAlignment="Start" Grid.Column="0"
+						   Grid.Row="1" />
+				</Grid>
+			</Frame>
+
+			<!--First Gallery View-->
+			<Label Text="Receipt and Tax Forms" TextColor="White" />
+			<ListView ItemsSource="{Binding ReceiptItems}" BackgroundColor="{StaticResource BrandColorLight}" RowHeight="100" HeightRequest="400">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+
+								<Image x:Name="firstImage" Source="{Binding ItemImages[0].ImageSrc}" Grid.Column="0">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[0]}" />
+									</Image.GestureRecognizers>
+								</Image>
+
+								<Image Source="{Binding ItemImages[1].ImageSrc}" Grid.Column="1">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[1]}" />
+									</Image.GestureRecognizers>
+								</Image>
+								<Image Source="{Binding ItemImages[2].ImageSrc}" Grid.Column="2">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[2]}" />
+									</Image.GestureRecognizers>
+								</Image>
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+
+			<!--Second Gallery View-->
+			<Label Grid.Row="3" Text="Goods" TextColor="White" />
+			<ListView ItemsSource="{Binding GoodsItems}" BackgroundColor="{StaticResource BrandColorLight}" RowHeight="100" HeightRequest="400">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+
+								<Image Source="{Binding ItemImages[0].ImageSrc}" Grid.Column="0">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[0]}" />
+									</Image.GestureRecognizers>
+								</Image>
+								<Image Source="{Binding ItemImages[1].ImageSrc}" Grid.Column="1">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[1]}" />
+									</Image.GestureRecognizers>
+								</Image>
+
+								<Image Source="{Binding ItemImages[2].ImageSrc}" Grid.Column="2">
+									<Image.GestureRecognizers>
+										<TapGestureRecognizer
+											Command="{Binding Source={x:Reference Root}, Path=BindingContext.OnImageTapped}"
+											CommandParameter="{Binding ItemImages[2]}" />
+									</Image.GestureRecognizers>
+								</Image>
+
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+		
+		<ContentView BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading}" />
+		<ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+	</AbsoluteLayout>
+</controls:ContentPageShakeView>

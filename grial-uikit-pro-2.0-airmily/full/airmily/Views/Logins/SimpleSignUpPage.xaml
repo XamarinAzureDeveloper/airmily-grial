@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+		xmlns:local="clr-namespace:airmily;assembly=airmily"
+		x:Class="airmily.SimpleSignUpPage"
+		Title="Simple Sign Up"
+		BackgroundColor="{DynamicResource BasePageColor}">
+
+		<ContentPage.Content>
+			<AbsoluteLayout>
+			
+			<!-- GRADIENT-->
+			<Image 
+				AbsoluteLayout.LayoutBounds="0,0,1,44"
+				AbsoluteLayout.LayoutFlags="WidthProportional"
+				Style="{ StaticResource StatusBarShimStyle }"
+				VerticalOptions="Start"/>
+
+			<ScrollView
+				AbsoluteLayout.LayoutBounds="0,0,1,1"
+				AbsoluteLayout.LayoutFlags="All"
+				VerticalOptions="FillAndExpand"	
+				Padding="{ DynamicResource MainWrapperPadding }">
+				
+				<!-- MAIN CONTAINER -->
+				<Grid
+					ColumnSpacing="0"
+					RowSpacing="0"
+					Padding="20,30,20,20"
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand" >
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<!-- CLOSE ICON -->
+					<Label 
+						Grid.Row="0"
+						TextColor="{ DynamicResource BaseTextColor }"
+						Style="{DynamicResource IconCloseLabelStyle}" 
+						HorizontalOptions="End"
+						VerticalOptions="Start">
+						<Label.GestureRecognizers>
+							<TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+						</Label.GestureRecognizers>
+					</Label>
+
+				
+					<!-- HEADER -->
+					<StackLayout 
+						Grid.Row="0" 
+						Spacing="3"
+						Padding="0,20,0,0"
+						InputTransparent="true">
+
+						<!-- LOGO -->
+						<Grid
+							Grid.Row="1" 
+							WidthRequest="60"
+							HeightRequest="60"
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+							<BoxView
+								BackgroundColor="{ DynamicResource AccentColor }"/>
+							<Label
+								TextColor="{ DynamicResource OverImageTextColor }"
+								FontSize="42"
+								Text="{ x:Static local:GrialShapesFont.LogoGrial }" 
+								Style="{StaticResource FontIcon}"
+								HorizontalTextAlignment="Center"
+								VerticalTextAlignment="Center"/>
+						</Grid>
+
+						<!-- WELCOME TEXT -->
+						<Label
+							Text="Welcome to Grial"
+							FontSize="{ artina:OnOrientationDouble
+								PortraitPhone=22,
+								LandscapePhone=22,
+								PortraitTablet=28,
+								LandscapeTablet=28 }"
+							HorizontalTextAlignment="Center"/>	
+						<Label
+							Text="Use your credentials to login."
+							HorizontalTextAlignment="Center"
+							FontSize="{ artina:OnOrientationDouble
+								PortraitPhone=15,
+								LandscapePhone=15,
+								PortraitTablet=18,
+								LandscapeTablet=18 }"/>
+					
+						<!--SEPARATOR-->
+						<BoxView 
+							WidthRequest="80"
+							HeightRequest="1"
+							HorizontalOptions="Center"
+							VerticalOptions="End"
+							BackgroundColor="{DynamicResource BaseTextColor}"/>
+					</StackLayout>
+
+			
+					<!---FIELDS CONTAINER-->
+					<Grid
+						Grid.Row="1"
+						RowSpacing="30"
+						Padding="0,20,0,20"
+						VerticalOptions="Center" >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="14"
+							Text="{ x:Static local:GrialShapesFont.Person }" 
+							Style="{StaticResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"/>
+
+						<!--NAME ENTRY-->
+						<Entry
+							Grid.Column="1"
+							Grid.Row="0"
+							HeightRequest="40"
+							Placeholder="Name"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }"/>
+
+						<!--LAST NAME ENTRY-->
+						<Entry
+							Grid.Column="2"
+							Grid.Row="0"
+							Margin="6,0,0,0"
+							HeightRequest="40"
+							Placeholder="Last Name"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }"/>
+
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="14"
+							Text="{ x:Static local:GrialShapesFont.Place }" 
+							Style="{StaticResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"/>
+
+						<!--ADDRESS ENTRY-->
+						<Entry
+							Grid.Column="1"
+							Grid.ColumnSpan="2"
+							Grid.Row="1"
+							HeightRequest="40"
+							Placeholder="Address"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }"/>
+						   
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="2"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="2"
+							FontSize="14"
+							Text="{ x:Static local:GrialShapesFont.Email }" 
+							Style="{StaticResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"/>
+
+						<!--ADDRESS ENTRY-->
+						<Entry
+							Grid.Column="1"
+							Grid.ColumnSpan="2"
+							Grid.Row="2"
+							HeightRequest="40"
+							Placeholder="Email"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }"/>
+
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="3"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="3"
+							FontSize="14"
+							Text="{ x:Static local:GrialShapesFont.Lock }" 
+							Style="{DynamicResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"/>
+
+						<!--ADDRESS ENTRY-->
+						<Entry
+							Grid.Column="1"
+							Grid.ColumnSpan="2"
+							Grid.Row="3"
+							HeightRequest="40"
+							Placeholder="Password"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }"/>
+
+					
+				    </Grid>
+
+					<!-- BUTTONS -->
+					<StackLayout 
+						Grid.Row="2"
+						Spacing="10"
+						HorizontalOptions="Fill"
+						VerticalOptions="End">
+
+						<!-- SINGUP -->
+						<artina:Button
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							VerticalOptions="End"
+							Text="Sign Up"
+							WidthRequest="{ artina:OnOrientationDouble
+								LandscapePhone=200,
+								LandscapeTablet=400 }"
+							HorizontalOptions="{ artina:OnOrientationLayoutOptions
+								PortraitPhone=Fill,
+								LandscapePhone=Center,
+								PortraitTablet=Fill,
+								LandscapeTablet=Center }"/>
+
+						<!-- LOGIN -->
+						<artina:Button
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							BackgroundColor="{DynamicResource ComplementColor}"
+							VerticalOptions="End"
+							Text="Login"
+							WidthRequest="{ artina:OnOrientationDouble
+								LandscapePhone=200,
+								LandscapeTablet=400 }"
+							HorizontalOptions="{ artina:OnOrientationLayoutOptions
+								PortraitPhone=Fill,
+								LandscapePhone=Center,
+								PortraitTablet=Fill,
+								LandscapeTablet=Center }"/>
+
+					</StackLayout>
+				</Grid>
+
+			
+			</ScrollView>
+		</AbsoluteLayout>
+	</ContentPage.Content>
+</ContentPage>
+

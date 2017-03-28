@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.ChatRightMessageItemTemplate">
+
+	<Grid
+		ColumnSpacing="0" 
+		RowSpacing="0" 
+		VerticalOptions="StartAndExpand"
+		Padding="0,0,0,20"
+		>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<!-- LEFT TRIANGLE -->
+		<Label
+			Grid.Row="1" 
+			Grid.Column="1"
+			HorizontalTextAlignment="Start"
+			VerticalTextAlignment="Start"
+			TranslationX="-26"
+			TranslationY="-11"
+			Text="{ x:Static local:GrialShapesFont.BoldArrowDown }"
+			TextColor="{ DynamicResource ChatRightBalloonBackgroundColor }" 
+			Style="{StaticResource FontIcon}" 
+			FontSize="26"/>
+
+
+		<!-- BALLOON BACKGROUND -->
+		<StackLayout
+			Grid.Row="0" 
+			Grid.Column="0"
+			Padding="10"
+			BackgroundColor="{ DynamicResource ChatRightBalloonBackgroundColor }" 
+			VerticalOptions="EndAndExpand" >
+
+			<Label
+				TextColor="{ DynamicResource ChatRightTextColor }"
+				FontSize="12"
+				Text="{ Binding Body }" 
+
+			/>
+		</StackLayout>
+
+
+		<!-- RIGHT AVATAR -->
+		<artina:CircleImage 
+			Grid.Row="1" 
+			Grid.Column="1"
+			Source="{ Binding From.Avatar }"
+			Style="{ DynamicResource AvatarXSmall }"
+			BorderColor="{ DynamicResource ChatRightBalloonBackgroundColor }"
+			HorizontalOptions="Start" 
+			TranslationY="10" 
+		/>
+
+		<!-- WHEN -->
+		<Label 
+			Grid.Row="1" 
+			Grid.Column="0"
+			HorizontalOptions="Start"
+			VerticalOptions="CenterAndExpand"
+			TranslationX="10"
+			TranslationY="10"
+			FontSize ="12"
+			TextColor="{ DynamicResource BaseTextColor }"
+			Text="{ Binding When }" 
+		/>
+
+		<!-- BY -->
+		<Label 
+			Grid.Row="1" 
+			Grid.Column="0"
+			TranslationX="-10"
+			TranslationY="10"
+			FontSize ="12"
+			TextColor="{ DynamicResource BaseTextColor }"
+			HorizontalTextAlignment="End"
+			VerticalTextAlignment="Center" 
+			Text="{ Binding From.Name }" 
+		/>
+	</Grid>
+</ContentView>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.IconsPage"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Title="Theme Icons Preview">
+	
+	<ContentPage.Content>
+		<Grid 
+			Margin="0,20,0,0" 
+			RowSpacing="0">	
+			
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			
+			<Label Grid.Row="0" Margin="20,0,0,0" Text="{ Binding IconsFontFamily }" FontAttributes="Bold" />
+			<Label Grid.Row="1" Margin="20,0,0,0" Text="{ Binding IconsCount }" />
+			<Label Grid.Row="1" Margin="45,0,0,0" Text=" Icons" />
+
+			<BoxView 
+				Grid.Row="1"
+				VerticalOptions="End"
+				Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+			
+			<ListView 
+				Grid.Row="2"
+				CachingStrategy="RecycleElement"
+				ItemsSource="{ Binding IconsList }">
+				
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Margin="20,0,0,0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="24" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+
+								<Label 
+									Grid.Column="0"
+									Text="{ Binding Icon }" 
+									VerticalOptions="CenterAndExpand"
+									Style="{ DynamicResource FontIcon }"
+									TextColor="{ DynamicResource AccentColor }"
+									/>
+							
+								<Label
+									x:Name="FontIconLabel"
+									Grid.Column="1"
+									Text="{ Binding Name }"
+									VerticalOptions="CenterAndExpand"></Label>
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</Grid>
+	</ContentPage.Content>
+	
+</ContentPage>

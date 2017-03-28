@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.DocumentTimelinePage"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Title="Document Timeline">
+	
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:DocumentTimelineSelector x:Key="Selector">
+				
+				<local:DocumentTimelineSelector.DocumentTimelineLeftItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<local:DocumentTimelineLeftItemTemplate />
+						</ViewCell>
+					</DataTemplate>
+				</local:DocumentTimelineSelector.DocumentTimelineLeftItemTemplate>
+				
+				<local:DocumentTimelineSelector.DocumentTimelineRightItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<local:DocumentTimelineRightItemTemplate />
+						</ViewCell>
+					</DataTemplate>
+				</local:DocumentTimelineSelector.DocumentTimelineRightItemTemplate>
+				
+			</local:DocumentTimelineSelector>
+			
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+		<ListView
+			CachingStrategy="RecycleElement"
+			ItemsSource="{ Binding DocumentTimelineList }"  
+			SeparatorVisibility="None"
+			BackgroundColor="Transparent"
+			HasUnevenRows="true"
+			ItemTemplate="{ StaticResource Selector }"
+			VerticalOptions="FillAndExpand">
+		</ListView>
+	</ContentPage.Content>
+
+</ContentPage>

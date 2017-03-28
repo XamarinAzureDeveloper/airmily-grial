@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.CustomActivityIndicatorPage"
+	BackgroundColor="{DynamicResource BasePageColor}">
+
+	<ContentPage.Content>
+		<Grid
+			VerticalOptions="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<local:CustomActivityIndicator
+				Grid.Row="0"
+				HorizontalOptions="Center"
+				VerticalOptions="CenterAndExpand"/>
+			<Label
+				Grid.Row="1"
+				HorizontalTextAlignment="Center"
+				Text="Loading..." />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

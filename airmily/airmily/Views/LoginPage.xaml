@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="airmily.Views.LoginPage"
+             BackgroundColor="{StaticResource BackgroundColour}">
+	
+	<ScrollView>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="100"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="100"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Label	Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+				<Label.FormattedText>
+					<FormattedString>
+						<Span Text="air"	FontSize="48" FontAttributes="Italic" ForegroundColor="#000000"></Span>
+						<Span Text="mily"	FontSize="48" FontAttributes="Italic" ForegroundColor="#FDB813"></Span>
+					</FormattedString>
+				</Label.FormattedText>
+			</Label>
+
+			<Button				Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"	IsVisible="{Binding ShowLoginButton}"	Image="icon48_wx_button.png" FontSize="Large" Command="{Binding LoginCmd}" />
+			<Label				Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center"						IsVisible="{Binding LoginFailed}"		Text="*Not our user message*" TextColor="#CC1111" />
+			<ActivityIndicator	Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="End"		IsVisible="{Binding IsLoading}"			IsRunning="{Binding IsLoading}"/>
+		</Grid>
+	</ScrollView>
+</ContentPage>

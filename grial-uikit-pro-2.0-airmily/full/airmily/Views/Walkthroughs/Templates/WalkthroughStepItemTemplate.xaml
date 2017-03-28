@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="airmily.WalkthroughStepItemTemplate"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:local="clr-namespace:airmily;assembly=airmily"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Name="StepContentPage"
+    Style="{DynamicResource WalkthroughStepStyle}"
+    BackgroundColor="{ DynamicResource BasePageColor }">
+
+
+    <Grid
+        Padding="20,30,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <!--PHONE-->
+            <Label 
+                Text="{ x:Static local:GrialShapesFont.IphoneStrokeDevice }"
+                Style="{ StaticResource FontIcon }"
+                TextColor="{ DynamicResource ComplementColor }"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" 
+                        Android="260" 
+                        iOS="340" />
+                </Label.FontSize>
+            </Label>
+
+            <!--ICON-->
+            <Label
+                x:Name="IconLabel"
+                Style="{ DynamicResource WalkthroughStepIconStyle }"
+                FontSize="60"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Text="{ x:Static local:GrialShapesFont.LogoGrial }"
+                TextColor="#5F7DD4"/>
+
+            <!--TEXT-->
+            <StackLayout
+                Grid.Row="1"
+                VerticalOptions="Center"
+                Spacing="10">
+
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="Learn"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
+                <Label
+                    x:Name="DescriptionLabel"
+                    HorizontalTextAlignment="Center"
+                    Opacity="0,7"
+                    Text="Learn while you do. Grial has a huge collection of samples to play."
+                    FontSize="16"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
+                <BoxView
+                    Style="{ DynamicResource BrandNameOrnamentStyle }"
+                    BackgroundColor="{ DynamicResource ComplementColor }"
+                    HorizontalOptions="Center"/>
+                
+            </StackLayout>
+
+        </Grid>
+
+        <!--BUTTON-->
+        <artina:Button
+            Grid.Row="1"
+            Style="{ DynamicResource PrimaryActionButtonStyle }"
+            x:Name="PrimaryActionButton"
+            Text="Next"
+            Clicked="OnPrimaryActionButtonClicked"/>
+
+        <!--COSE BUTTON-->
+        <Label
+            Grid.Row="0"
+            FontSize="30"
+            Text="{ x:Static local:GrialShapesFont.Close }"
+            HorizontalTextAlignment="End"
+            VerticalTextAlignment="Start"
+            TextColor="{ DynamicResource BaseTextColor }"
+            HeightRequest="30"
+            WidthRequest="30"
+            Style="{ StaticResource FontIcon }">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+            </Label.GestureRecognizers>
+        </Label>
+        
+    </Grid>
+</ContentPage>

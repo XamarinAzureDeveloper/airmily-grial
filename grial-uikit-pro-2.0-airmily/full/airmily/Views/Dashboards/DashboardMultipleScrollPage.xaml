@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily" 
+	xmlns:ctlRep="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Repeater" 
+	x:Class="airmily.DashboardMultipleScrollPage"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Title="Dashboard Multiple Scroll">
+	
+	<ContentPage.Content>
+		<ScrollView>
+			<Grid
+				RowSpacing="0">
+				<Grid.RowDefinitions>
+					<RowDefinition>
+						<RowDefinition.Height>
+							<OnIdiom 
+								x:TypeArguments="GridLength"
+								Phone="290"
+								Tablet="500"
+							/>
+						</RowDefinition.Height>
+					</RowDefinition>
+
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<local:DashboardMultipleScrollMainItemTemplate Grid.Row="0"/>
+
+				<ctlRep:Repeater Grid.Row="1" 
+					ItemsSource="{Binding Sections}"
+					Orientation="Vertical">
+				
+					<ctlRep:Repeater.ItemSize>
+						<OnIdiom 
+							x:TypeArguments="x:Double"
+							Phone="180"
+							Tablet="314"/>
+					</ctlRep:Repeater.ItemSize>
+					<ctlRep:Repeater.ItemTemplate>
+						<DataTemplate>
+							<local:DashboardMultipleScrollSectionTemplate />
+						</DataTemplate>
+					</ctlRep:Repeater.ItemTemplate>
+				</ctlRep:Repeater>
+			</Grid>
+		</ScrollView>
+	</ContentPage.Content>
+
+</ContentPage>

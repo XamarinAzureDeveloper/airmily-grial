@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.CustomSettingsPage"
+	
+	Title="Custom Settings Page"
+	BackgroundColor="{DynamicResource BasePageColor}">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<Color x:Key="PrimaryTextColor">#333333</Color>
+
+			
+			<Style x:Key="PseudoTableSectionTitleStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="{ DynamicResource AccentColor }" />
+				<Setter Property="VerticalTextAlignment" Value="End" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="FontAttributes" Value="Bold" />
+				<Setter Property="TranslationX" Value="30" />
+				<Setter Property="TranslationY" Value="-10" />
+
+				<Setter Property="AbsoluteLayout.LayoutBounds" Value="0, 0, 1, 60"/>
+				<Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional"/>
+			</Style>
+
+			<Style x:Key="PseudoTableSectionTitleIconStyle" TargetType="Label" BasedOn="{ StaticResource FontIcon }">
+				<Setter Property="TextColor" Value="{ DynamicResource AccentColor }" />
+				<Setter Property="VerticalTextAlignment" Value="End" />
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="TranslationX" Value="10" />
+				<Setter Property="TranslationY" Value="-10" />
+
+				<Setter Property="AbsoluteLayout.LayoutBounds" Value="0, 0, 1, 60"/>
+				<Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional"/>
+			</Style>
+
+			<Style x:Key="PseudoTableSectionLineBaseStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+			</Style>
+
+			<Style x:Key="PseudoTableSectionLineStyle" BasedOn="{ StaticResource PseudoTableSectionLineBaseStyle }" TargetType="BoxView">
+				<Setter Property="BackgroundColor" Value="#22000000" />
+			</Style>
+
+			<Style x:Key="PseudoTableSectionTitleLineStyle" BasedOn="{ StaticResource PseudoTableSectionLineBaseStyle }" TargetType="BoxView">
+				<Setter Property="BackgroundColor" Value="{  DynamicResource AccentColor }" />
+				<Setter Property="HeightRequest" Value="1" />
+				<Setter Property="AbsoluteLayout.LayoutBounds" Value="0, 1, 1, 1"/>
+				<Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional, YProportional"/>
+			</Style>
+
+			<Style x:Key="PseudoTableSectionTitleBackgroundStyle" TargetType="AbsoluteLayout">
+				<Setter Property="BackgroundColor" Value="#05000000" />
+				<Setter Property="AbsoluteLayout.LayoutBounds" Value="0, 0, 1, 60"/>
+				<Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional"/>
+			</Style>
+			
+			<Style x:Key="PseudoTableSectionTextStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="TextColor" Value="{ DynamicResource BaseTextColor }" />
+
+				<Setter Property="HeightRequest" Value="44" />
+			</Style>
+
+			<Style x:Key="PseudoTableSectionSwitchStyle" TargetType="Switch">
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+
+			<Style x:Key="PseudoTableSectionGroupStyle" TargetType="StackLayout">
+				<Setter Property="Padding" Value="10,0" />
+				<Setter Property="Orientation" Value="Horizontal"  />
+			</Style>
+
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+				
+	<ContentPage.Content>
+		
+		<ScrollView>
+
+			<StackLayout 
+				Spacing="0"
+				Padding="0,0,0,20">
+
+				<!-- GENERAL -->
+				<AbsoluteLayout
+					Style="{ StaticResource PseudoTableSectionTitleBackgroundStyle }">
+
+					<Label 
+						Text="{ x:Static local:GrialShapesFont.Build }" 
+						Style="{ DynamicResource PseudoTableSectionTitleIconStyle }" />
+
+					<Label
+						Style="{ StaticResource PseudoTableSectionTitleStyle }"
+						Text="GENERAL"/> 
+
+					<BoxView
+						Style="{ StaticResource PseudoTableSectionTitleLineStyle }" />
+						
+				</AbsoluteLayout>
+
+
+				
+				<StackLayout 
+					Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+					<Label
+						VerticalOptions="Center"
+						Text="Display Global issues"
+						Style="{ StaticResource PseudoTableSectionTextStyle }"/> 
+					
+					<Switch
+						Style="{ StaticResource PseudoTableSectionSwitchStyle }"
+					/>
+				</StackLayout>
+				
+				<BoxView
+					Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+				<StackLayout
+					Style="{ StaticResource PseudoTableSectionGroupStyle }">
+					
+					<Label
+						VerticalOptions="Center"
+						Text="Clear Image Cache"
+						Style="{ StaticResource PseudoTableSectionTextStyle }"/> 
+
+					<Switch
+						Style="{ StaticResource PseudoTableSectionSwitchStyle }"
+					/>
+				</StackLayout>
+
+				<BoxView
+					Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+
+
+				<!-- SOCIAL NETWORKS -->
+				<AbsoluteLayout
+					Style="{ StaticResource PseudoTableSectionTitleBackgroundStyle }">
+
+					<Label 
+						Text="{ x:Static local:GrialShapesFont.Group }" 
+						Style="{ DynamicResource PseudoTableSectionTitleIconStyle }" />
+
+					<Label
+						Style="{ StaticResource PseudoTableSectionTitleStyle }"
+						Text="SOCIAL NETWORKS"/> 
+
+					<BoxView
+						Style="{ StaticResource PseudoTableSectionTitleLineStyle }" />
+						
+				</AbsoluteLayout>
+
+
+				
+				<StackLayout 
+					Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+					<Label 
+						Text="{ x:Static local:GrialShapesFont.SocialTwitter }" 
+						TextColor="#00ACED"
+						Margin="0,0,8,3"
+						TranslationX="0"
+						Style="{ DynamicResource PseudoTableSectionTitleIconStyle }" />
+
+					<Label
+						VerticalOptions="Center"
+						Text="Twitter"
+						Style="{ StaticResource PseudoTableSectionTextStyle }"/> 
+
+					
+					<Switch
+						Style="{ StaticResource PseudoTableSectionSwitchStyle }"
+						IsToggled="true"
+					/>
+				</StackLayout>
+				
+				<BoxView
+					Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+				<StackLayout 
+					Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+					<Label 
+						Text="{ x:Static local:GrialShapesFont.SocialFacebook }" 
+						TextColor="#49659F"
+						Margin="0,0,8,3"
+						TranslationX="0"
+						Style="{ DynamicResource PseudoTableSectionTitleIconStyle }" />
+
+					<Label
+						VerticalOptions="Center"
+						Text="Facebook"
+						Style="{ StaticResource PseudoTableSectionTextStyle }"/> 
+
+					
+					<Switch
+						Style="{ StaticResource PseudoTableSectionSwitchStyle }"
+					/>
+				</StackLayout>
+
+				<BoxView
+					Style="{ StaticResource PseudoTableSectionLineStyle }" />
+
+				<StackLayout 
+					Style="{ StaticResource PseudoTableSectionGroupStyle }">
+
+					<Label 
+						Text="{ x:Static local:GrialShapesFont.SocialLinkedin }" 
+						TextColor="#49659F"
+						Margin="0,0,8,3"
+						TranslationX="0"
+						Style="{ DynamicResource PseudoTableSectionTitleIconStyle }" />
+
+					<Label
+						VerticalOptions="Center"
+						Text="Linkedin"
+						Style="{ StaticResource PseudoTableSectionTextStyle }"/>
+					
+					<Switch
+						Style="{ StaticResource PseudoTableSectionSwitchStyle }"
+					/>
+				</StackLayout>
+
+			</StackLayout>
+		</ScrollView>
+	</ContentPage.Content>
+	
+</ContentPage>

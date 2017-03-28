@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily" 
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	x:Class="airmily.ProductImageFullScreenPage">
+	<ScrollView>
+
+		<AbsoluteLayout>
+
+			<StackLayout 
+				BackgroundColor="Black"
+				VerticalOptions="FillAndExpand" 
+				HorizontalOptions="FillAndExpand"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<ffimageloading:CachedImage 
+					FadeAnimationEnabled="true"
+					x:Name="img" 
+					HorizontalOptions="FillAndExpand" 
+					VerticalOptions="FillAndExpand" 
+					Scale="2"
+					Source="product_item_0.jpg"/>
+			</StackLayout>
+
+			<!--CLOSE ICON-->
+			<StackLayout 
+				Padding="20"
+				HorizontalOptions="End"
+				VerticalOptions="Start"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, .1"
+				AbsoluteLayout.LayoutFlags="All"  >
+				
+				<Label
+					FontSize="30"
+					Text="{ x:Static local:GrialShapesFont.Close }"
+					HorizontalTextAlignment="End"
+					VerticalTextAlignment="Center"
+					TextColor="{ DynamicResource OverImageTextColor }"
+					HeightRequest="30"
+					WidthRequest="30"
+					Style="{StaticResource FontIcon}">
+					
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+					</Label.GestureRecognizers>
+				
+				</Label>
+				
+			</StackLayout>
+
+		</AbsoluteLayout>
+
+	</ScrollView>
+</ContentPage>

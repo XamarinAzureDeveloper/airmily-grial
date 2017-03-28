@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ArticlesFeedPage"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	Title="Articles Feed"
+	BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+
+	<!-- MAIN WRAPPER -->
+			
+	<ListView 
+		SeparatorColor="{ DynamicResource MainWrapperBackgroundColor }"
+		SeparatorVisibility="Default"
+		ItemsSource="{ Binding PostsList }"
+		ItemTapped="OnItemTapped"
+		HasUnevenRows="true">
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<local:ArticleFeedItemTemplate
+						Padding="{StaticResource MainWrapperPadding}"/>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+</ContentPage>

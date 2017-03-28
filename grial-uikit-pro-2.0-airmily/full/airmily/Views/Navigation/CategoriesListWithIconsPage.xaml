@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="airmily.CategoriesListWithIconsPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	Title="Icon Categories"
+	BackgroundColor="{ DynamicResource BasePageColor }">
+
+	<ListView 
+		ItemsSource="{Binding SamplesCategories}"
+		SeparatorVisibility="None"
+		SeparatorColor="Transparent"
+		ItemTapped="OnItemTapped"
+		HasUnevenRows="false">
+			<ListView.RowHeight>
+				<OnIdiom x:TypeArguments="x:Int32"
+					Phone="80"
+					Tablet="120"/>
+			</ListView.RowHeight>
+	
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<local:CategoriesListWithIconsItemTemplate/>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+
+	</ListView>
+
+</ContentPage>

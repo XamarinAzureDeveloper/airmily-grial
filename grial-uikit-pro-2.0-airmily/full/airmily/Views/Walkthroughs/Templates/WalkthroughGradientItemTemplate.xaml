@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.WalkthroughGradientItemTemplate">
+
+	<ContentPage.Content>
+					
+		<!-- MAIN WRAPPER -->
+		<Grid>
+			<Image
+				x:Name="img"
+				Aspect="AspectFill"/>
+
+			<!-- ICON BACKGROUND -->
+			<Grid 
+				Grid.Row="0"
+				Padding="0"
+				Margin="0,30,0,0"
+				VerticalOptions="Center" >
+
+				<!--FIRST LEVEL ELLIPSIS-->
+				<Label
+					Style="{StaticResource WalktrhoughItemTemplateShape}" 
+					FontSize="360"
+					/>
+
+				<!--SECOND LEVEL ELLIPSIS-->
+				<Label
+					Style="{StaticResource WalktrhoughItemTemplateShape}" 
+					FontSize="260"
+					/>	
+				
+				<!--SECOND LEVEL ELLIPSIS-->
+				<Label
+					Style="{StaticResource WalktrhoughItemTemplateShape}" 
+					FontSize="180"
+					/>	
+
+				<!--ICON BACKGROUND-->
+				<Label
+					Style="{StaticResource WalktrhoughItemTemplateShape}" 
+					FontSize="130"
+					Opacity="0.3"
+					/>	
+
+				<!--ICON-->
+				<Label
+					x:Name="IconLabel"
+					Style="{DynamicResource WalkthroughStepIconStyle}"
+					VerticalOptions="Center"
+					Text="{ x:Static local:GrialShapesFont.LogoGrial }"
+					/>
+
+				<!--ICON-->
+				<artina:CircleImage
+					x:Name="img"
+					BorderColor="Transparent"
+					HorizontalOptions="Center"
+					Aspect="AspectFill"
+					WidthRequest="120" 
+					HeightRequest="120"
+					VerticalOptions="Center" />
+			</Grid>
+
+			<!--TEXT -->
+			<StackLayout 
+					Grid.Row="1" 
+					Padding="60,0" 
+					Spacing="20"
+					VerticalOptions="Center">
+				<Label 
+					x:Name="HeaderLabel"
+					HorizontalTextAlignment="Center" 
+					Text="Learn" 
+					FontSize="24" 
+					FontAttributes="Bold" 
+					TextColor="White"/>
+				
+				<Label 
+					x:Name="DescriptionLabel"
+					HorizontalTextAlignment="Center"
+					Opacity="0.7" 
+					Text="Learn while you do. Grial has a huge collection of smaples to play. " 
+					FontSize="16" 
+					TextColor="White"/>
+			</StackLayout>
+
+			<!--CLOSE ICON-->
+			<Label 
+				Grid.Row="0"
+				FontSize="24"
+				Margin="10"
+				Text="{ x:Static local:GrialShapesFont.Close }"
+				HorizontalOptions="End"
+				VerticalOptions="Start"
+				TextColor="{ DynamicResource OverImageTextColor }"
+				HeightRequest="30"
+				WidthRequest="30"
+				Style="{StaticResource FontIcon}">
+				<Label.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+				</Label.GestureRecognizers>
+			</Label>
+
+			<!--BUTTON-->
+			<artina:Button
+				Grid.Row="2"
+				Margin="20"
+				Style="{DynamicResource PrimaryActionButtonStyle}"
+				x:Name="PrimaryActionButton"
+				BackgroundColor="{DynamicResource ComplementColor}"
+				VerticalOptions="End"
+				Clicked="OnPrimaryActionButtonClicked"
+				Text="Next"/>
+
+		</Grid>
+			
+	</ContentPage.Content>
+</ContentPage>
+

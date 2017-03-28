@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTProgressHUDDemo", "BTProgressHUDSample\BTProgressHUDDemo.csproj", "{620134FD-4E54-4459-8E18-8B6E1C8A2274}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
+		AppStore|iPhone = AppStore|iPhone
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Debug|iPhone.Build.0 = Debug|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Release|iPhone.ActiveCfg = Release|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Release|iPhone.Build.0 = Release|iPhone
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{620134FD-4E54-4459-8E18-8B6E1C8A2274}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = BTProgressHUDSample\BTProgressHUDDemo.csproj
+	EndGlobalSection
+EndGlobal

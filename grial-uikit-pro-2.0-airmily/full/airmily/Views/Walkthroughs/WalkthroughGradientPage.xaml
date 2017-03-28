@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CarouselPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.WalkthroughGradientPage"
+	xmlns:local="clr-namespace:airmily;assembly=airmily">
+
+	<local:WalkthroughGradientItemTemplate 
+		BackgroundColor="#e51e61"
+		StepBackgroundImage="walkthrough_bg_0.jpg"
+		Header="Welcome" 
+		Text="To a new world of posibilities, &#10; welcome to Grial UI Kit." 
+		IconText="{ x:Static local:GrialShapesFont.Public }"
+		IconColor="#FFF"
+		ButtonText="Next" 
+		ButtonBackgroundColor="{ DynamicResource ComplementColor }"
+	/>
+
+	<local:WalkthroughGradientItemTemplate 
+		BackgroundColor="#7a919c"
+		StepBackgroundImage="walkthrough_bg_1.jpg"
+		Header="Save time" 
+		Text="Save countless hours of UI design. &#10; Focus on what you do best."
+		IconText="{ x:Static local:GrialShapesFont.FlashOn }"
+		IconColor="#FFF"
+		ButtonText="Next"
+		ButtonBackgroundColor="{ DynamicResource ComplementColor }"
+	/>
+	
+	<local:WalkthroughGradientItemTemplate 
+		BackgroundColor="#488cfb"
+		StepBackgroundImage="walkthrough_bg_2.jpg"
+		Header="Learn"
+		Text="Learn while you do. &#10; Grial has tones of examples for you to play."
+		IconText="{ x:Static local:GrialShapesFont.School }"
+		IconColor="#FFF"
+		ButtonText="Finish!"
+		ButtonBackgroundColor="{ DynamicResource ComplementColor }"
+	/>
+
+</CarouselPage>

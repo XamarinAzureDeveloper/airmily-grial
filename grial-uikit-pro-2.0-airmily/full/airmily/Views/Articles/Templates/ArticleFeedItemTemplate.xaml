@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.ArticleFeedItemTemplate"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+
+	<Grid
+		Padding="20" 
+		VerticalOptions="FillAndExpand"
+		HorizontalOptions="FillAndExpand"
+		BackgroundColor="{DynamicResource BasePageColor}">
+
+		<!-- LEFT COL -->
+		<artina:CircleImage 
+			Source="{ Binding Avatar }" 
+			Style="{ StaticResource AvatarXSmall }"
+			HorizontalOptions="Start"
+			VerticalOptions="Start"/>
+
+		<!-- RIGHT COL -->
+		<StackLayout 
+			Padding="56,0,0,0"
+			HorizontalOptions="FillAndExpand"
+			VerticalOptions="FillAndExpand"
+			Spacing="10">
+
+			<Label
+				Text="{ Binding Author }"
+				FontAttributes="Bold"
+				TextColor="{ DynamicResource AccentColor }"/>
+
+			<Label
+				Text="{ Binding Title }" 
+				LineBreakMode="WordWrap"
+				VerticalTextAlignment="End"
+				HorizontalTextAlignment="Start"
+				TextColor="{ DynamicResource BaseTextColor }"
+				/>
+
+			<ffimageloading:CachedImage
+				FadeAnimationEnabled="true" 
+				Source="{ Binding BackgroundImage }"
+				Aspect="AspectFill"
+				VerticalOptions="StartAndExpand"
+				HeightRequest="{ artina:OnOrientationDouble 
+					Default=130, 
+					PortraitPhone=130,
+					LandscapePhone=130,
+					PortraitTablet=220,
+					LandscapeTablet=220 }"/>
+
+			<Label
+				Text="{ Binding When }" 
+				FontSize="12" Opacity=".9"
+				HorizontalOptions="End"
+				TextColor="{ DynamicResource BaseTextColor }"/>
+
+		</StackLayout>
+
+	</Grid>
+</ContentView>

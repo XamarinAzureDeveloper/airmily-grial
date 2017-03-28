@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<controls:ContentPageShakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                            xmlns:controls="clr-namespace:airmily.Views.Controls;assembly=airmily"
+                            xmlns:behaviors="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
+                            prism:ViewModelLocator.AutowireViewModel="True"
+                            x:Class="airmily.Views.TransactionsListPage"
+                            Title="{Binding Title}"
+                            BackgroundColor="{StaticResource BackgroundColour}"
+							x:Name="Root">
+	<AbsoluteLayout>
+		<StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+			<controls:NavigationBarView
+							Title="{Binding Title}" IsBackButton="{Binding IsBackButton}" BackCmd="{Binding BackCmd}"
+							OtherText="{Binding OtherText}" OtherCmd="{Binding OtherCmd}"/>
+			
+			<Frame HasShadow="True" Padding="10" BackgroundColor="{StaticResource BrandColorDarker}"
+				   BindingContext="{Binding CurrentCard}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Label Text="{Binding Main}" TextColor="White" FontAttributes="Italic" HorizontalTextAlignment="Center"
+						   Grid.Row="0" />
+					<Label Text="{Binding Details}" TextColor="White" FontAttributes="Italic"
+						   HorizontalTextAlignment="Center"
+						   Grid.Row="1" />
+					<Label Text="{Binding Value}" TextColor="White" FontAttributes="Italic"
+						   HorizontalTextAlignment="Center"
+						   Grid.Row="2" />
+				</Grid>
+			</Frame>
+			<ListView SeparatorVisibility="Default" ItemsSource="{Binding TransactionsList}" MinimumHeightRequest="140" IsRefreshing="{Binding IsLoading}"
+					  HasUnevenRows="True" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" SelectedItem="{Binding SelectedTransaction, Mode=TwoWay}" >
+				<behaviors:Interaction.Behaviors>
+					<behaviors:BehaviorCollection>
+						<behaviors:EventToCommand EventName="ItemTapped" Command="{Binding OnTransactionTapped}"
+												  PassEventArgument="True" />
+					</behaviors:BehaviorCollection>
+				</behaviors:Interaction.Behaviors>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<controls:TransItemView />
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+
+		<ContentView BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading}" />
+		<ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+	</AbsoluteLayout>
+</controls:ContentPageShakeView>

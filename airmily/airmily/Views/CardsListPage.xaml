@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<controls:ContentPageShakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                            xmlns:controls="clr-namespace:airmily.Views.Controls;assembly=airmily"
+                            xmlns:behaviors="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
+                            xmlns:artina="clr-namespace:UXDivers;assembly=UXDivers.Artina.Shared"
+                            prism:ViewModelLocator.AutowireViewModel="True"
+                            x:Class="airmily.Views.CardsListPage"
+                            BackgroundColor="{StaticResource BackgroundColour}"
+                            Title="{Binding Title}"
+							x:Name="Root">
+
+	<!--<ContentPage.ToolbarItems>
+		<ToolbarItem Icon="Icon-Small-40.png" Command="{Binding SettingsCmd}"/>
+	</ContentPage.ToolbarItems>-->
+
+	<AbsoluteLayout>
+		<StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+			<controls:NavigationBarView
+				Title="{Binding Title}" IsBackButton="{Binding IsBackButton}" BackCmd="{Binding BackCmd}"
+				OtherText="{Binding OtherText}" OtherCmd="{Binding OtherCmd}"/>
+			
+			<Label Text="{Binding NumberOfCards}" />
+					  
+			<ListView SeparatorVisibility="Default" ItemsSource="{Binding CardsList}" RowHeight="180" HasUnevenRows="True" IsRefreshing="{Binding IsLoading}"
+					  IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" SelectedItem="{Binding SelectedCard, Mode=TwoWay}">
+
+				<behaviors:Interaction.Behaviors>
+					<behaviors:BehaviorCollection>
+						<behaviors:EventToCommand EventName="ItemTapped" Command="{Binding GoToTransactionsListPage}" PassEventArgument="True" />
+					</behaviors:BehaviorCollection>
+				</behaviors:Interaction.Behaviors>
+
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<controls:CardItemTemplateView />
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+
+		<ContentView BackgroundColor="#222222" Opacity="0.5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" IsVisible="{Binding IsLoading}" />
+		<ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+	</AbsoluteLayout>
+</controls:ContentPageShakeView>

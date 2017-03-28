@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.CustomRenderersPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	Title="Custom Renderers"
+	BackgroundColor="{DynamicResource BasePageColor}">
+
+
+	<ScrollView>
+		<StackLayout 
+			VerticalOptions="Fill" 
+			Padding="20" 
+			Spacing="10">
+			
+			<!-- ARTINA BUTTON -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.OutlineCircle } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+			
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" Artina Buttons" />
+			</AbsoluteLayout>
+
+			<artina:Button Text="Default" />
+			<artina:Button Text="Primary Action" Style="{DynamicResource PrimaryActionButtonStyle}" />
+			<artina:Button Text="Secondary Action" Style="{DynamicResource SecondaryActionButtonStyle}" />
+			<artina:Button Text="Save" Style="{DynamicResource SaveButtonStyle}" />
+			<artina:Button Text="Delete" Style="{DynamicResource DeleteButtonStyle}" />
+			
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+			
+			<!-- CIRCLE IMAGES -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Favorite } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" CircleImages" />
+			</AbsoluteLayout>
+			
+			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+				<artina:CircleImage 
+					Source="{ StaticResource ThemeAvatarSample0Image }"
+					Style="{ StaticResource AvatarXSmall }"
+				/>
+				<artina:CircleImage 
+					Source="{ StaticResource ThemeAvatarSample0Image }"
+					Style="{ StaticResource AvatarSmall }"
+				/>
+
+				<artina:CircleImage 
+					Source="{ StaticResource ThemeAvatarSample1Image }"
+					Style="{ StaticResource Avatar }" 
+				/>
+
+				<artina:CircleImage 
+					Source="{ StaticResource ThemeAvatarSample1Image }"
+					Style="{ StaticResource AvatarLarge }" 
+				/>
+			</StackLayout>
+
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+
+			<!-- ARTINA ENTRY -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Email }" 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+			
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" Artina Entry" />
+			</AbsoluteLayout>
+			<Entry
+				Placeholder="E-mail"
+				Text=""
+				TextColor="Black"
+				Style="{ StaticResource ArtinaEntryStyle }"
+			/>
+
+			<BoxView Style="{ DynamicResource ThemeShowCaseHorizontalRuleStyle }" />
+
+
+			<!-- VALIDATION ENTRY ERROR STYLE -->
+			<AbsoluteLayout>
+				<Label 
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text="{ x:Static local:GrialShapesFont.Favorite } " 
+					FontFamily="{ StaticResource IconsFontFamily }" />
+				
+				<Label 
+					Margin="20,0,0,0"
+					TextColor="{ DynamicResource BaseTextColor }"
+					Text=" Validation Entry Error Style" />
+			</AbsoluteLayout>
+			
+			<StackLayout Orientation="Vertical">
+				<Entry 
+					Text="Something wrong here"
+					PlaceholderColor="{ DynamicResource BaseTextColor }"
+					BackgroundColor="{ DynamicResource PlaceholderColorEntry }"/>
+
+			  <!---USERNAME VALIDATION INDICATOR-->
+				<Label
+					HorizontalOptions="Start"
+					Text=" Please enter required information "
+					Style="{DynamicResource ValidationEntryErrorStyle}"
+					/>
+
+			</StackLayout>
+			<StackLayout>
+				<Entry 
+					Text="Something wrong here"
+					PlaceholderColor="{ DynamicResource BaseTextColor }"
+					BackgroundColor="{ DynamicResource PlaceholderColorEntry }"/>
+			
+				<!---USERNAME VALIDATION INDICATOR-->
+				<Label
+					HorizontalOptions="Start"
+					Text=" Oops! This is just a friendly warning "
+					Style="{DynamicResource ValidationEntryWarningStyle}"
+					/>
+			</StackLayout>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

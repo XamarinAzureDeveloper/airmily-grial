@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	x:Class="airmily.ArticleItemTemplate">
+
+	<Grid BackgroundColor="Black">
+		<ffimageloading:CachedImage
+			FadeAnimationEnabled="true" 
+			Source="{ Binding BackgroundImage }"
+			Aspect="AspectFill"
+			Opacity="1"/>
+			
+		<Grid
+			ColumnSpacing="0" 
+			RowSpacing="6" 
+			Padding="20">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="10" />
+			</Grid.RowDefinitions>
+
+			<StackLayout 
+				Grid.Row="0" 
+				VerticalOptions="End" 
+				HorizontalOptions="Start">
+				
+				<Label
+					FontSize="30"
+					FontAttributes="Bold"
+					Text="{Binding Title}" 
+					LineBreakMode="WordWrap"
+					TextColor="{ DynamicResource OverImageTextColor }"
+					/>
+			</StackLayout>
+
+			<StackLayout 
+				Grid.Row="1"
+				Orientation="Horizontal" 
+				HorizontalOptions="Fill"
+				VerticalOptions="FillAndExpand"
+				>
+					<Label 
+						Text="{ Binding Section }"
+						TextColor="{ DynamicResource OverImageTextColor }"
+						HorizontalOptions="StartAndExpand" 
+						VerticalOptions="End" />
+			
+					<Label 
+						Text="{ Binding When }" 
+						TextColor="{ DynamicResource OverImageTextColor }" 
+						HorizontalOptions="End" 
+						TranslationX="-10" 
+						VerticalOptions="End"/>
+				
+					<Label 
+						HorizontalOptions="End" 
+						VerticalOptions="End"
+						Text="{ x:Static local:GrialShapesFont.Group } " 
+						FontSize=" { StaticResource BaseFontSize }" 
+						TextColor="{ DynamicResource AccentColor }" 
+						FontFamily="{ StaticResource IconsFontFamily }" 
+						TranslationY="-3"/>
+			
+					<Label 
+						HorizontalOptions="End" 
+						VerticalOptions="End"
+						Text=" 77"	
+						FontSize="{ StaticResource BaseFontSize }" 
+						TextColor="{ DynamicResource AccentColor }" />
+			
+					<Label 
+						HorizontalOptions="End" 
+						VerticalOptions="End"
+						Text="{ x:Static local:GrialShapesFont.Favorite } " 
+						FontSize="{ StaticResource BaseFontSize }" 
+						TextColor="{ DynamicResource AccentColor }" 
+						FontFamily="{ StaticResource IconsFontFamily }"
+						TranslationY="-3"/>
+			
+					<Label 
+						HorizontalOptions="End" 
+						VerticalOptions="End"
+						Text=" 22" 
+						FontSize="{ StaticResource BaseFontSize }" 
+						TextColor="{ DynamicResource AccentColor }" />
+
+				</StackLayout>
+				
+				<BoxView 
+					Grid.Row="2"
+					Style="{StaticResource BrandNameOrnamentStyle}"/>
+		</Grid>
+	</Grid>
+		
+</ContentView>

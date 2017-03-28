@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="airmily.ArticleViewPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+	Title="Article View"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+
+	<ScrollView 
+		x:Name="outerScrollView"
+		Padding="{ DynamicResource MainWrapperPadding }">
+			
+			<Grid 
+				x:Name="layeringGrid" 
+				RowSpacing="0"
+				VerticalOptions="FillAndExpand">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="240" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Grid 
+					Grid.Row="0"
+					Grid.RowSpan="2"
+					Padding="0"
+					BackgroundColor="Black">
+
+					<!-- MAIN IMAGE -->
+					<ffimageloading:CachedImage
+						x:Name="img"
+						Source="{ Binding Post.BackgroundImage }"
+						Aspect="AspectFill"
+						BackgroundColor="Black"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="Start"
+						Opacity=".8"/>
+				</Grid>
+
+				<!-- MAIN HEADER -->
+				<StackLayout
+					Grid.Row="0"
+					Padding="20"
+					Spacing="0"
+					VerticalOptions="End"
+					x:Name="headers" 
+					AnchorX="0"
+					AnchorY="0">
+
+					<!-- HEADERS -->
+					<Label
+						Text="{ Binding Post.Title }"
+						LineBreakMode="WordWrap"
+						TextColor="{ DynamicResource OverImageTextColor }"
+						FontSize="26"
+						FontAttributes="Bold"/>
+
+					<Label
+						Text="{ Binding Post.Subtitle }"
+						LineBreakMode="WordWrap"
+						TextColor="{ DynamicResource OverImageTextColor }"
+						FontSize="16"/>
+
+					<BoxView  
+						Style="{StaticResource BrandNameOrnamentStyle}"
+						Margin="0,20,0,0"/>
+
+				</StackLayout>
+
+
+
+				<Grid
+					Grid.Row="1"
+					BackgroundColor="{ DynamicResource BasePageColor }">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="60" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="60" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<!--HEADER BACKGROUND-->
+					<BoxView
+						Grid.Row="0"
+						BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+					<!--HEADER INFO-->
+					<StackLayout
+						Orientation="Horizontal"
+						Grid.Row="0"
+						Padding="20,0"
+						VerticalOptions="Center"
+						Spacing="10">
+					
+						<Label 
+							Text="{ Binding Post.Section }" 
+							FontSize="14"
+							TextColor="{ DynamicResource BaseTextColor }"
+							HorizontalOptions="StartAndExpand"
+							VerticalTextAlignment="Center"/>
+						<Label 
+							Text="{ Binding Post.When }"
+							FontSize="14"
+							TextColor="{ DynamicResource BaseTextColor }"
+							HorizontalOptions="End"/>
+					
+						<StackLayout
+							Orientation="Horizontal">
+							<Label 
+								HorizontalOptions="End"
+								Text="{ x:Static local:GrialShapesFont.Group } " 
+								FontSize="{ StaticResource BaseFontSize }"
+								TextColor="{ DynamicResource AccentColor }" 
+								FontFamily="{ StaticResource IconsFontFamily }" />
+						
+							<Label 
+								HorizontalOptions="End"
+								Text=" 72" 
+								FontSize="14"
+								TextColor="{ DynamicResource AccentColor }" />
+
+							<Label 
+								HorizontalOptions="End"
+								Text="{ x:Static local:GrialShapesFont.Favorite } " 
+								FontSize="{ StaticResource BaseFontSize }"
+								TextColor="{ DynamicResource AccentColor }" 
+								FontFamily="{ StaticResource IconsFontFamily }" />
+						
+							<Label 
+								HorizontalOptions="End" 
+								Text=" 24" 
+								FontSize="14"
+								TextColor="{ DynamicResource AccentColor }" />
+						</StackLayout>
+					</StackLayout>
+
+					<!-- SEPARATOR -->
+					<BoxView
+						Grid.Row="0"
+						VerticalOptions="End"
+						Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+					<!-- TEXT -->
+					<Grid
+						Grid.Row="1"
+						Padding="20,20,20,0"
+						VerticalOptions="Center"
+						RowSpacing="20">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<!-- MAIN PARAGRAPH -->
+						<Label
+							Grid.Row="0"
+							Text="{ Binding Post.Body }"
+							VerticalOptions="Center"
+							TextColor="{ DynamicResource BaseTextColor }" />
+
+						<!-- QUOTE -->
+						<Grid
+							Grid.Row="1"
+							Padding="0,30"
+							VerticalOptions="Center">
+
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="30" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="30" />
+							</Grid.ColumnDefinitions>
+
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="30" />
+							</Grid.RowDefinitions>
+						
+							<Label
+								Grid.Row="0"
+								Grid.Column="0"
+								Text="“"
+								FontSize="42"
+								MinimumWidthRequest="42"
+								FontAttributes="Bold"
+								VerticalOptions="Start"
+								TextColor="{ DynamicResource ComplementColor }" />
+							<Label
+								Grid.Row="0"
+								Grid.Column="1"
+								Text="{ Binding Post.Quote }"
+								VerticalTextAlignment="Center"
+								FontSize="20"
+								LineBreakMode="WordWrap"
+								TextColor="{ DynamicResource ComplementColor }" />
+							<Label 
+								Grid.Row="1"
+								Grid.Column="1"
+								Text="{ Binding Post.QuoteAuthor }"
+								VerticalTextAlignment="Center"
+								TextColor="{ DynamicResource ComplementColor }" />
+							<Label
+								Grid.Row="1"
+								Grid.Column="2"
+								Text="”"
+								FontSize="42"
+								FontAttributes="Bold"
+								MinimumWidthRequest="42"
+								VerticalOptions="End"
+								TextColor="{ DynamicResource ComplementColor }"/>
+						</Grid>
+
+						<!-- REMAINING PARAGRAPHS -->
+						<Label
+							Grid.Row="2"
+							Text="{ Binding Post.Body }"
+							VerticalOptions="Center"
+							TextColor="{ DynamicResource BaseTextColor }"/>
+					</Grid>
+
+
+
+					<!-- POSTED -->
+					<Grid
+						Grid.Row="2"
+						Padding="0,30">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="50*" />
+							<ColumnDefinition Width="50*" />
+						</Grid.ColumnDefinitions>
+
+						<StackLayout
+							Grid.Column="0"
+							Orientation="Horizontal"
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+
+							<artina:CircleImage 
+								Source="{ Binding Post.Avatar }" 
+								Style="{ StaticResource AvatarXSmall }"
+								VerticalOptions="Center"/>
+							<Label 
+								Text="{ Binding Post.Author, StringFormat='by {0:F0}'} }"
+								TextColor="{ DynamicResource AccentColor }"
+								VerticalTextAlignment="Center"/>
+						</StackLayout>
+
+						<StackLayout
+							Grid.Column="1"
+							Orientation="Horizontal" 
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+
+							<Label
+								Text="{ x:Static local:GrialShapesFont.Label }"
+								TextColor="{ DynamicResource AccentColor }"
+								FontSize="24" 
+								Style="{ StaticResource FontIcon }"
+								VerticalOptions="Center"
+								VerticalTextAlignment="Center"/>
+							<Label
+								Text="{ Binding Post.Section, StringFormat='in {0:F0}'} }"
+								TextColor="{ DynamicResource AccentColor }"
+								VerticalTextAlignment="Start"/>
+						</StackLayout>
+
+					</Grid>
+
+					<!-- COMMENTS -->
+
+					<!-- HEADER BACKGROUND -->
+					<BoxView
+						Grid.Row="3"
+						BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+					<!-- TEXT -->
+					<Grid
+						Grid.Row="3"
+						Padding="20,0">
+						<Label
+							BindingContext="{ Binding Comments }"
+							Text="{ Binding Count, StringFormat='{0:F0} COMMENTS' }"
+							TextColor="{ DynamicResource BaseTextColor }"
+							FontSize="12"
+							VerticalTextAlignment="Center"
+							HorizontalTextAlignment="Start"/>
+					</Grid>
+				
+					<!-- SEPARATOR -->
+					<BoxView
+						Grid.Row="3"
+						Style="{ StaticResource Horizontal1ptLineStyle }"
+						VerticalOptions="End"/>
+
+					<ListView
+						Grid.Row="4"
+						ItemsSource="{ Binding Comments }"
+						SeparatorColor="{ DynamicResource ListViewSeparatorColor}"
+						SeparatorVisibility="Default"
+						RowHeight="180"
+						ItemTapped="OnItemTapped"
+						VerticalOptions="FillAndExpand">
+
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<ViewCell.ContextActions>
+										<MenuItem 
+											 Clicked="OnMore"
+											 Text="More"/>
+										<MenuItem 
+											 Clicked="OnDelete"
+											 Text="Delete" 
+											 IsDestructive="True" />
+									</ViewCell.ContextActions>
+
+									<local:CommentItemTemplate />
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
+
+					<!-- BUTTON -->
+					<Grid
+						Grid.Row="5"
+						Padding="20"
+						VerticalOptions="Center">
+						<artina:Button
+							Text="Add Comment"
+							Style="{ StaticResource PrimaryActionButtonStyle }"
+							Clicked="OnPrimaryActionButtonClicked" 
+							WidthRequest="{ artina:OnOrientationDouble
+								LandscapePhone=200,
+								LandscapeTablet=400 }"
+							HorizontalOptions="{ artina:OnOrientationLayoutOptions
+								PortraitPhone=Fill,
+								LandscapePhone=Center,
+								PortraitTablet=Fill,
+								LandscapeTablet=Center }"/>
+					</Grid>
+
+				
+				</Grid>
+
+			</Grid>
+	</ScrollView>
+
+</ContentPage>

@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:tab="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Tab" 
+	xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base" 
+	xmlns:effects="clr-namespace:UXDivers.Effects;assembly=UXDivers.Effects"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	Title="Grial TabControl Sample Page"
+	x:Class="airmily.TabControlSamplePage"
+	BackgroundColor="#DA125F">
+	
+	<ContentPage.Resources>
+		<ResourceDictionary> 
+
+			<!-- COLORS -->
+			<Color x:Key="TabStripBackgroundColor">#EE000000</Color>
+			<Color x:Key="TabContentBackgroundColor">#F5F5F5</Color>
+
+			<Color x:Key="TabItemDefaultStateBackgroundColor">Transparent</Color>
+			<Color x:Key="TabItemDefaultStateTextColor">#B2FFFFFF</Color>
+
+			<Color x:Key="TabItemActiveStateBackgroundColor">#FF4081</Color>
+			<Color x:Key="TabItemActiveStateTextColor">#FFFFFF</Color>
+
+			<!-- MEASURES -->
+			<x:Double x:Key="TabItemTextFontSize">14</x:Double>
+			<x:Double x:Key="TabItemIconWidthRequest">24</x:Double>
+			<x:Double x:Key="TabItemIconHeightRequest">24</x:Double>
+
+			<x:Double x:Key="TabItemIconTextFontSize">24</x:Double>
+
+			<x:Double x:Key="TabIndicatorHeightRequest">2</x:Double>
+
+			<x:Double x:Key="TabStripIconAndTextHeightRequest">72</x:Double>
+			<x:Double x:Key="TabStripIconsHeightRequest">48</x:Double>
+
+
+
+			<!-- STYLES -->
+			<Style x:Key="TabStripBaseStyle" TargetType="Grid">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource TabStripBackgroundColor }" />
+				<!--<Setter Property="BackgroundColor" Value="{ DynamicResource ComplementColor }" />-->
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabStripIconsHeightRequest }" />
+			</Style>
+
+			<Style x:Key="TabStripStyle" TargetType="Grid" BaseResourceKey="TabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabStripIconsHeightRequest }" />
+			</Style>
+
+
+			<Style x:Key="TabContentStyle" TargetType="Grid" >
+				<Setter Property="HeightRequest" Value="320" />
+				<Setter Property="BackgroundColor" Value="{ DynamicResource TabContentBackgroundColor }" />
+			</Style>
+
+			<Style x:Key="TabStripIconAndTextStyle" TargetType="Grid" BaseResourceKey="TabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabStripIconAndTextHeightRequest }" />
+			</Style>
+
+			<Style x:Key="TabStripIconsStyle" TargetType="Grid" BaseResourceKey="TabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabStripIconsHeightRequest }" />
+			</Style>
+
+
+			<Style x:Key="TabItemStyle" TargetType="Grid">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource TabItemDefaultStateBackgroundColor }" />
+				<Setter Property="Margin" Value="0" />
+			</Style>
+
+			<Style x:Key="TabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="{ DynamicResource TabItemTextFontSize }" />
+				<!--<Setter Property="Margin" Value="12,0" />-->
+			</Style>
+
+			<Style x:Key="TabItemTextDefaultStateStyle" TargetType="Label" BaseResourceKey="TabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource TabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="TabItemTextActiveStateStyle" TargetType="Label" BaseResourceKey="TabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource TabItemActiveStateTextColor }" />
+			</Style>
+
+
+			<Style x:Key="TabItemIconTextBaseStyle" BaseResourceKey="TabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="{ DynamicResource TabItemIconTextFontSize }" />
+				<Setter Property="TranslationY" Value="0" />
+			</Style>
+
+			<Style x:Key="TabItemIconTextDefaultStateStyle" TargetType="Label" BaseResourceKey="TabItemIconTextBaseStyle}">
+				<Setter Property="TextColor" Value="{ DynamicResource TabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="TabItemIconTextActiveStateStyle" TargetType="Label" BaseResourceKey="TabItemIconTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource TabItemActiveStateTextColor }" />
+			</Style>
+
+
+			<Style x:Key="TabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="WidthRequest" Value="{ DynamicResource TabItemIconWidthRequest }" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabItemIconHeightRequest }" />
+			</Style>
+
+			<Style x:Key="TabItemIconImageDefaultStateStyle" BaseResourceKey="TabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value=".7" />
+			</Style>
+
+			<Style x:Key="TabItemIconImageActiveStateStyle" BaseResourceKey="TabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+
+
+			<Style x:Key="TabItemIndicatorBaseStyle" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="{ DynamicResource TabIndicatorHeightRequest }" />
+				<Setter Property="VerticalOptions" Value="End" />
+			</Style>
+
+			<Style x:Key="TabItemIndicatorDefaultStateStyle" BaseResourceKey="TabItemIndicatorBaseStyle" TargetType="BoxView">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource TabItemDefaultStateBackgroundColor }" />
+			</Style>
+
+			<Style x:Key="TabItemIndicatorActiveStateStyle" BaseResourceKey="TabItemIndicatorBaseStyle" TargetType="BoxView">
+				<!--<Setter Property="BackgroundColor" Value="{ DynamicResource TabItemActiveStateBackgroundColor }" />-->
+				<Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
+			</Style>
+
+			<!-- CONVERTERS -->
+
+			<converter:NegateBooleanConverter x:Key="InvertBoolConverter" />
+
+			<converter:BooleanToObjectConverter 
+				x:Key="TabItemTextStateStyleConverter" 
+				x:TypeArguments="Style"
+				FalseValue="{ StaticResource TabItemTextDefaultStateStyle }"
+				TrueValue="{ StaticResource TabItemTextActiveStateStyle }" />
+
+			<converter:BooleanToObjectConverter 
+				x:Key="TabItemIndicatorStateStyleConverter"
+				x:TypeArguments="Style"
+				FalseValue="{ StaticResource TabItemIndicatorDefaultStateStyle }"
+				TrueValue="{ StaticResource TabItemIndicatorActiveStateStyle }" />
+
+			<converter:BooleanToObjectConverter 
+				x:Key="TabItemTextStateNoIconStyleConverter"
+				x:TypeArguments="Style"
+				FalseValue="{ StaticResource TabItemIconTextDefaultStateStyle }"
+				TrueValue="{ StaticResource TabItemIconTextActiveStateStyle }" />
+			
+
+			<!-- TEMPLATES -->
+			<DataTemplate x:Key="DefaultTabItemTemplate">
+				<Grid
+					Padding="0"
+					Grid.Row="0"
+					Grid.Column="0"
+					ColumnSpacing="0"
+					RowSpacing="0"
+					Style="{ DynamicResource TabItemStyle }"
+				>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<Grid 
+					Grid.Row="0" 
+					VerticalOptions="Center" 
+					RowSpacing="0">
+							
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<Grid IsVisible="{ Binding HasIcon }" >
+						<Image
+							Grid.Row="0"
+							Grid.Column="0"
+							IsVisible="{ Binding IsSelected, Converter={ StaticResource InvertBoolConverter } }"
+							Style="{ DynamicResource TabItemIconImageDefaultStateStyle }"
+							Source="{ Binding Icon }"
+							/>
+
+						<Image
+							Grid.Row="0"
+							Grid.Column="0"
+							IsVisible="{ Binding IsSelected }"
+							Style="{ DynamicResource TabItemIconImageActiveStateStyle }"
+							Source="{ Binding IconSelected }"
+							/>
+					</Grid>
+
+					<Label
+						Grid.Row="1" 
+						Grid.Column="0"
+						IsVisible="{Binding HasText}"
+						Style="{ Binding IsSelected, Converter={ StaticResource TabItemTextStateStyleConverter }, Mode=OneWay }"
+						Text="{ Binding Text }" />
+					</Grid>
+
+					<BoxView
+						Grid.Row="1"
+						VerticalOptions="End"
+						Style="{ Binding IsSelected, Converter={ StaticResource TabItemIndicatorStateStyleConverter }, Mode=OneWay }"
+						Margin="0"
+						/>
+				</Grid>
+							
+			</DataTemplate>
+
+
+			<Style Class="TabControlStyle" TargetType="tab:TabControl">
+				<Style.Triggers>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="False">
+						<Setter Property="TabStripHeightRequest" Value="72"/>
+					</Trigger>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="True">
+						<Setter Property="TabStripHeightRequest" Value="48"/>
+					</Trigger>
+				</Style.Triggers>
+
+				<Setter Property="TabStripBackgroundColor" Value="{ DynamicResource TabStripBackgroundColor }" />
+
+				<Setter Property="TabStripItemBackgroundColor" Value="{ DynamicResource TabItemDefaultStateBackgroundColor }" />
+
+				<Setter Property="TabContentBackgroundColor" Value="{ DynamicResource TabContentBackgroundColor }" />
+				<Setter Property="TabTemplate" Value="{ DynamicResource DefaultTabItemTemplate }" />
+				<Setter Property="TabContentHeightRequest" Value="320"/>
+			</Style>
+
+
+
+
+			
+			<!-- IOS COLORS -->
+			<Color x:Key="iOSTabStripBackgroundColor">#E6FAFAFA</Color>
+			<Color x:Key="iOSTabContentBackgroundColor">#F5F5F5</Color>
+
+			<Color x:Key="iOSTabItemDefaultStateBackgroundColor">Transparent</Color>
+			<Color x:Key="iOSTabItemDefaultStateTextColor">#979797</Color>
+
+			<Color x:Key="iOSTabItemActiveStateBackgroundColor">#007AFF</Color>
+			<Color x:Key="iOSTabItemActiveStateTextColor">#007AFF</Color>
+
+			<!-- IOS MEASURES -->
+			<x:Double x:Key="iOSTabItemTextFontSize">10</x:Double>
+			<x:Double x:Key="iOSTabItemIconWidthRequest">25</x:Double>
+			<x:Double x:Key="iOSTabItemIconHeightRequest">25</x:Double>
+
+			<x:Double x:Key="iOSTabItemIconTextFontSize">25</x:Double>
+
+			<x:Double x:Key="iOSTabIndicatorHeightRequest">0</x:Double>
+
+			<x:Double x:Key="iOSTabStripIconAndTextHeightRequest">49</x:Double>
+			<x:Double x:Key="iOSTabStripIconsHeightRequest">49</x:Double>
+
+			<!-- IOS STYLES -->
+			<Style x:Key="iOSTabStripBaseStyle" TargetType="Grid">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource iOSTabStripBackgroundColor }" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource iOSTabStripIconsHeightRequest }" />
+			</Style>
+
+			<Style x:Key="iOSTabStripStyle" TargetType="Grid" BaseResourceKey="iOSTabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource iOSTabStripIconsHeightRequest }" />
+				<Setter Property="Padding" Value="0" />
+				<Setter Property="Margin" Value="0" />
+			</Style>
+
+
+			<Style x:Key="iOSTabContentStyle" TargetType="Grid" >
+				<Setter Property="HeightRequest" Value="320" />
+				<Setter Property="BackgroundColor" Value="{ DynamicResource iOSTabContentBackgroundColor }" />
+			</Style>
+
+			<Style x:Key="iOSTabStripIconAndTextStyle" TargetType="Grid" BaseResourceKey="iOSTabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource iOSTabStripIconAndTextHeightRequest }" />
+			</Style>
+
+			<Style x:Key="iOSTabStripIconsStyle" TargetType="Grid" BaseResourceKey="iOSTabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource iOSTabStripIconsHeightRequest }" />
+			</Style>
+
+
+			<Style x:Key="iOSTabItemStyle" TargetType="Grid">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource iOSTabItemDefaultStateBackgroundColor }" />
+				<Setter Property="Margin" Value="0" />
+			</Style>
+
+			<Style x:Key="iOSTabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="{ DynamicResource iOSTabItemTextFontSize }" />
+				<!--<Setter Property="Margin" Value="12,0" />-->
+			</Style>
+
+			<Style x:Key="iOSTabItemTextDefaultStateStyle" TargetType="Label" BaseResourceKey="iOSTabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource iOSTabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="iOSTabItemTextActiveStateStyle" TargetType="Label" BaseResourceKey="iOSTabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource iOSTabItemActiveStateTextColor }" />
+			</Style>
+
+
+			<Style x:Key="iOSTabItemIconTextBaseStyle" BaseResourceKey="iOSTabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="{ DynamicResource iOSTabItemIconTextFontSize }" />
+				<Setter Property="TranslationY" Value="0" />
+			</Style>
+
+			<Style x:Key="iOSTabItemIconTextDefaultStateStyle" TargetType="Label" BaseResourceKey="iOSTabItemIconTextBaseStyle}">
+				<Setter Property="TextColor" Value="{ DynamicResource iOSTabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="iOSTabItemIconTextActiveStateStyle" TargetType="Label" BaseResourceKey="iOSTabItemIconTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource iOSTabItemActiveStateTextColor }" />
+			</Style>
+
+
+			<Style x:Key="iOSTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="WidthRequest" Value="{ DynamicResource iOSTabItemIconWidthRequest }" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource iOSTabItemIconHeightRequest }" />
+			</Style>
+
+			<Style x:Key="iOSTabItemIconImageDefaultStateStyle" BaseResourceKey="iOSTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+
+			<Style x:Key="iOSTabItemIconImageActiveStateStyle" BaseResourceKey="iOSTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+
+			<!-- CONVERTERS -->
+			<converter:NegateBooleanConverter x:Key="iOSInvertBoolConverter" />
+			
+			<converter:BooleanToObjectConverter 
+				x:Key="iOSTabItemTextStateStyleConverter" 
+				x:TypeArguments="Style"
+				FalseValue="{ StaticResource iOSTabItemTextDefaultStateStyle }"
+				TrueValue="{ StaticResource iOSTabItemTextActiveStateStyle }" />
+
+			<converter:BooleanToObjectConverter 
+				x:Key="iOSTabItemTextStateNoIconStyleConverter"
+				x:TypeArguments="Style"
+				FalseValue="{ StaticResource iOSTabItemIconTextDefaultStateStyle }"
+				TrueValue="{ StaticResource iOSTabItemIconTextActiveStateStyle }" />
+
+			<!-- iOS TEMPLATES -->
+			<DataTemplate x:Key="iOSTabItemTemplate">
+				<Grid
+					Grid.Row="0"
+					Grid.Column="0"
+					Padding="0"
+					Margin="0"
+					ColumnSpacing="0"
+					RowSpacing="0"
+					Style="{ DynamicResource iOSTabItemStyle }"
+				>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="17" />
+				</Grid.RowDefinitions>
+					
+				<BoxView
+					Grid.Row="0"
+					HeightRequest="1"
+					BackgroundColor="#B2B2B2"
+					Margin="0"
+					/>
+
+				<Image
+					Grid.Row="1"
+					Grid.Column="0"
+					Margin="0,7,0,0"
+					VerticalOptions="Start"
+					IsVisible="{ Binding IsSelected, Converter={ StaticResource iOSInvertBoolConverter } }"
+					Style="{ DynamicResource iOSTabItemIconImageDefaultStateStyle }"
+					Source="{ Binding Icon }"
+					/>
+
+				<Image
+					Grid.Row="1"
+					Grid.Column="0"
+					Margin="0,7,0,0"
+					VerticalOptions="Start"
+					IsVisible="{ Binding IsSelected }"
+					Style="{ DynamicResource iOSTabItemIconImageActiveStateStyle }"
+					Source="{ Binding IconSelected }"
+					/>
+
+				<Label
+					Grid.Row="2" 
+					Grid.Column="0"
+					VerticalOptions="End"
+					Margin="0,0,0,3"
+					IsVisible="{Binding HasText}"
+					Style="{ Binding IsSelected, Converter={ StaticResource iOSTabItemTextStateStyleConverter }, Mode=OneWay }"
+					Text="{ Binding Text }" />
+					
+				</Grid>
+							
+			</DataTemplate>
+
+
+
+			<Style Class="iOSTabControlStyle" TargetType="tab:TabControl">
+				<Style.Triggers>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="False">
+						<Setter Property="TabStripHeightRequest" Value="49"/>
+					</Trigger>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="True">
+						<Setter Property="TabStripHeightRequest" Value="49"/>
+					</Trigger>
+				</Style.Triggers>
+
+				<Setter Property="TabStripBackgroundColor" Value="{ DynamicResource iOSTabStripBackgroundColor }" />
+				<Setter Property="TabStripItemBackgroundColor" Value="{ DynamicResource iOSTabItemDefaultStateBackgroundColor }" />
+				<Setter Property="TabContentBackgroundColor" Value="{ DynamicResource iOSTabContentBackgroundColor }" />
+				<Setter Property="TabTemplate" Value="{ DynamicResource iOSTabItemTemplate }" />
+				<Setter Property="TabContentHeightRequest" Value="320"/>
+			</Style>
+
+
+
+
+
+			
+			<!-- GRIAL COLORS -->
+			<Color x:Key="GrialTabStripBackgroundColor">#66000000</Color>
+			<Color x:Key="GrialTabContentBackgroundColor">White</Color>
+			
+			<Color x:Key="GrialTabItemDefaultStateBackgroundColor">Transparent</Color>
+			<Color x:Key="GrialTabItemDefaultStateTextColor">#FFFFFF</Color>
+						  
+			<Color x:Key="GrialTabItemActiveStateBackgroundColor">#525ABB</Color>
+			<Color x:Key="GrialTabItemActiveStateTextColor">#FFFFFF</Color>
+
+			<!-- MEASURES -->
+			<x:Double x:Key="GrialTabItemTextFontSize">16</x:Double>
+			<x:Double x:Key="GrialTabItemIconWidthRequest">20</x:Double>
+			<x:Double x:Key="GrialTabItemIconHeightRequest">20</x:Double>
+							 
+			<x:Double x:Key="GrialTabItemIconTextFontSize">20</x:Double>
+							 
+			<x:Double x:Key="GrialTabIndicatorHeightRequest">44</x:Double>
+							 
+			<x:Double x:Key="GrialTabStripIconAndTextHeightRequest">44</x:Double>
+			<x:Double x:Key="GrialTabStripIconsHeightRequest">44</x:Double>
+
+			<!-- STYLES -->
+
+			<Style x:Key="GrialTabStripBaseStyle" TargetType="Grid">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource GrialTabStripBackgroundColor }" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabStripIconsHeightRequest }" />
+			</Style>
+
+			<Style x:Key="GrialTabStripStyle" TargetType="View">
+				<Setter Property="Margin" Value="20,12" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabStripIconsHeightRequest }" />
+				<Setter Property="effects:Effects.CornerRadius" Value="22" />
+			</Style>
+
+			<Style x:Key="GrialTabContentStyle" TargetType="Grid" >
+				<Setter Property="HeightRequest" Value="320" />
+				<Setter Property="BackgroundColor" Value="{ DynamicResource GrialTabContentBackgroundColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabStripIconAndTextStyle" TargetType="Grid" BaseResourceKey="GrialTabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabStripIconAndTextHeightRequest }" />
+			</Style>
+
+			<Style x:Key="GrialTabStripIconsStyle" TargetType="Grid" BaseResourceKey="GrialTabStripBaseStyle">
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabStripIconsHeightRequest }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemStyle" TargetType="View">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource GrialTabItemDefaultStateBackgroundColor }" />
+				<Setter Property="Margin" Value="0" />
+			</Style>
+
+			<Style x:Key="GrialTabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="HorizontalTextAlignment" Value="Center" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontSize" Value="{ DynamicResource GrialTabItemTextFontSize }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemTextDefaultStateStyle" TargetType="Label" BaseResourceKey="GrialTabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource GrialTabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemTextActiveStateStyle" TargetType="Label" BaseResourceKey="GrialTabItemTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource GrialTabItemActiveStateTextColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconTextBaseStyle" BaseResourceKey="GrialTabItemTextBaseStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="{ DynamicResource GrialTabItemIconTextFontSize }" />
+				<Setter Property="TranslationY" Value="0" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconTextDefaultStateStyle" TargetType="Label" BaseResourceKey="GrialTabItemIconTextBaseStyle}">
+				<Setter Property="TextColor" Value="{ DynamicResource GrialTabItemDefaultStateTextColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconTextActiveStateStyle" TargetType="Label" BaseResourceKey="GrialTabItemIconTextBaseStyle">
+				<Setter Property="TextColor" Value="{ DynamicResource GrialTabItemActiveStateTextColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="WidthRequest" Value="{ DynamicResource GrialTabItemIconWidthRequest }" />
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabItemIconHeightRequest }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconImageDefaultStateStyle" BaseResourceKey="GrialTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value=".7" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIconImageActiveStateStyle" BaseResourceKey="GrialTabItemIconImageBaseStyle" TargetType="Image">
+				<Setter Property="Opacity" Value="1" />
+			</Style>
+
+
+			<Style x:Key="GrialTabItemIndicatorBaseStyle" TargetType="View">
+				<Setter Property="HeightRequest" Value="{ DynamicResource GrialTabIndicatorHeightRequest }" />
+				<Setter Property="VerticalOptions" Value="End" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIndicatorDefaultStateStyle" BaseResourceKey="GrialTabItemIndicatorBaseStyle" TargetType="View">
+				<Setter Property="BackgroundColor" Value="{ DynamicResource GrialTabItemDefaultStateBackgroundColor }" />
+			</Style>
+
+			<Style x:Key="GrialTabItemIndicatorActiveStateStyle" BaseResourceKey="GrialTabItemIndicatorBaseStyle" TargetType="View">
+				<!--<Setter Property="BackgroundColor" Value="{ DynamicResource GrialTabItemActiveStateBackgroundColor }" />-->
+				<Setter Property="BackgroundColor" Value="{ DynamicResource ComplementColor }" />
+			</Style>
+
+			<!-- CONVERTERS -->
+			<converter:NegateBooleanConverter x:Key="GrialInvertBoolConverter" />
+			
+			<converter:BooleanToObjectConverter 
+					x:Key="GrialTabItemTextStateStyleConverter" 
+					x:TypeArguments="Style"
+					FalseValue="{ StaticResource GrialTabItemTextDefaultStateStyle }"
+					TrueValue="{ StaticResource GrialTabItemTextActiveStateStyle }" />
+
+			<converter:BooleanToObjectConverter 
+					x:Key="GrialTabItemIndicatorStateStyleConverter"
+					x:TypeArguments="Style"
+					FalseValue="{ StaticResource GrialTabItemIndicatorDefaultStateStyle }"
+					TrueValue="{ StaticResource GrialTabItemIndicatorActiveStateStyle }" />
+
+			<converter:BooleanToObjectConverter 
+					x:Key="GrialTabItemTextStateNoIconStyleConverter"
+					x:TypeArguments="Style"
+					FalseValue="{ StaticResource GrialTabItemIconTextDefaultStateStyle }"
+					TrueValue="{ StaticResource GrialTabItemIconTextActiveStateStyle }" />
+			
+			<!-- GRIAL TEMPLATES -->
+			<DataTemplate x:Key="GrialDefaultTabItemTemplate">
+
+				<AbsoluteLayout
+					Style="{ Binding IsSelected, Converter={ StaticResource GrialTabItemIndicatorStateStyleConverter }, Mode=OneWay }">
+
+					<StackLayout 
+						AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
+						AbsoluteLayout.LayoutBounds="0,0,1,1"
+						Padding="0"
+						Spacing="10"
+						Orientation="Horizontal"
+						HorizontalOptions="Center"
+					>
+						<Grid
+							IsVisible="{ Binding HasIcon }"
+							VerticalOptions="Center">
+							
+							<Image
+								Grid.Row="0"
+								Grid.Column="0"
+								IsVisible="{ Binding IsSelected, Converter={ StaticResource GrialInvertBoolConverter } }"
+								Style="{ DynamicResource GrialTabItemIconImageDefaultStateStyle }"
+								Source="{ Binding Icon }"
+							/>
+
+							<Image
+								Grid.Row="0"
+								Grid.Column="0"
+								IsVisible="{ Binding IsSelected }"
+								Style="{ DynamicResource GrialTabItemIconImageActiveStateStyle }"
+								Source="{ Binding IconSelected }"
+								/>
+						</Grid>
+						
+						
+						<Label
+							IsVisible="{ Binding HasText }"
+							Style="{ Binding IsSelected, Converter={ StaticResource GrialTabItemTextStateStyleConverter }, Mode=OneWay }"
+							Text="{ Binding Text }" />
+
+
+					</StackLayout>
+				</AbsoluteLayout>
+			</DataTemplate>
+
+
+			<Style Class="GrialTabControlStyle" TargetType="tab:TabControl">
+				<Style.Triggers>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="False">
+						<Setter Property="TabStripHeightRequest" Value="44"/>
+					</Trigger>
+					<Trigger TargetType="tab:TabControl" Property="SingleDescriptionTabs" Value="True">
+						<Setter Property="TabStripHeightRequest" Value="44"/>
+					</Trigger>
+				</Style.Triggers>
+
+				<Setter Property="TabStripBackgroundColor" Value="{ DynamicResource GrialTabStripBackgroundColor }" />
+
+				<Setter Property="TabStripItemBackgroundColor" Value="{ DynamicResource GrialTabItemDefaultStateBackgroundColor }" />
+
+				<Setter Property="TabContentBackgroundColor" Value="{ DynamicResource GrialTabContentBackgroundColor }" />
+				<Setter Property="TabTemplate" Value="{ DynamicResource GrialDefaultTabItemTemplate }" />
+				<Setter Property="TabContentHeightRequest" Value="320"/>
+				<Setter Property="TabStripStyle" Value="{ StaticResource GrialTabStripStyle }" />
+			</Style>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+
+		<Grid
+			ColumnSpacing="0"
+			RowSpacing="0">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<Grid 
+				Grid.Row="0" 
+				Grid.Column="0" 
+				ColumnSpacing="1"
+				RowSpacing="0"
+				BackgroundColor="White"
+				Margin="70,12"
+				Padding="0"
+				HeightRequest="55"
+				VerticalOptions="Center"
+			>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Label 
+					Grid.Row="0" 
+					Grid.Column="0" 
+					FontSize="12"
+					Margin="1"
+					BackgroundColor="#DA125F"
+					VerticalTextAlignment="Center"
+					HorizontalTextAlignment="Center"
+					TextColor="White"
+					Text="TabControl available only on &#x0a; Grial Pro or sold separately." /> 
+			</Grid>
+			
+			
+
+			<ScrollView 
+				Orientation="Both" 
+				Grid.Row="1" 
+				Grid.Column="0">
+				
+				<!-- Grial Tabs -->
+				 <tab:TabControl
+					TabStripPlacement="Top" 
+					StyleClass="GrialTabControlStyle"
+					Margin="0">
+
+					<tab:TabItem 
+						Text="Android Tab" 
+						Icon="android_tab_icon.png">
+						
+						<!-- Default (Android) Tabs -->
+						 <tab:TabControl
+							StyleClass="TabControlStyle">
+
+							<tab:TabItem 
+								Text="Drama" 
+								Icon="drama_icon">
+								<ffimageloading:CachedImage 
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/ZPXUOX"
+								/>
+							</tab:TabItem>
+							
+							<tab:TabItem 
+								Text="Comedy" 
+								Icon="comedy_icon.png">
+								<ffimageloading:CachedImage 
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/xB85Tj"
+								/>
+							</tab:TabItem> 
+
+							<tab:TabItem 
+								Text="Family" 
+								Icon="family_icon.png">
+								<ffimageloading:CachedImage 
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/dxRakj"
+								/>
+							</tab:TabItem> 
+							
+						</tab:TabControl>
+						
+					</tab:TabItem>
+					
+					<tab:TabItem 
+						Text="iOS Tab" 
+						Icon="ios_tab_icon.png">
+						
+						<!-- IOS Tabs -->
+						 <tab:TabControl
+							TabStripPlacement="Bottom"
+							StyleClass="iOSTabControlStyle">
+
+							<tab:TabItem 
+								Text="Sci Fi" 
+								Icon="ios_scifi_icon_default.png"
+								IconSelected="ios_scifi_icon_active.png">
+								<ffimageloading:CachedImage
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/u1rY3x"
+								/> 
+							</tab:TabItem>
+							
+							<tab:TabItem 
+								Text="Heroes" 
+								Icon="ios_heroes_icon_default.png"
+								IconSelected="ios_heroes_icon_active.png">
+								<ffimageloading:CachedImage 
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/Uat3vF"
+								/>
+							</tab:TabItem> 
+
+							<tab:TabItem 
+								Text="Action" 
+								Icon="ios_action_icon_default.png"
+								IconSelected="ios_action_icon_active.png">
+								<ffimageloading:CachedImage 
+									Aspect="Fill"
+									HorizontalOptions="Center"
+									VerticalOptions="Center"
+									WidthRequest="320"
+										
+									Source="https://goo.gl/QPdws9"
+								/>
+							</tab:TabItem> 
+							
+						</tab:TabControl>
+					</tab:TabItem>
+					
+				</tab:TabControl>
+			</ScrollView>
+		</Grid>
+	</ContentPage.Content>
+	
+</ContentPage>

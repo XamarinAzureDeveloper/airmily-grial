@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.Rating">
+	
+	<ContentView.Content>
+		<Label
+			x:Name="RatingLabel"
+			VerticalTextAlignment="Center" 
+			HorizontalTextAlignment="Start" 
+			Text="{ Binding Value }" 
+			TextColor="#ffb300" 
+			Style="{ StaticResource FontIconBase }"
+			FontSize="{ artina:OnOrientationDouble
+				PortraitPhone=24,
+				LandscapePhone=24,
+				PortraitTablet=34,
+				LandscapeTablet=34 }"/>
+	</ContentView.Content>
+	
+</ContentView>
+
+
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.TimelinePage"
+	Title="Timeline"
+	BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }">
+
+	<ContentPage.Content>
+		<ListView
+			ItemsSource="{ Binding TimelineList }" 
+			SeparatorVisibility="None"
+			BackgroundColor="{ DynamicResource BasePageColor }"
+			HasUnevenRows="true">
+
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<local:TimelineItemTemplate
+							Padding="{ DynamicResource MainWrapperPadding }"/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>	
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

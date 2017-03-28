@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.RecentChatListPage"
+	BackgroundColor="{ DynamicResource BasePageColor }"
+	Title="Recent Chat List">
+
+	<ContentPage.Content>
+		<ListView 
+			ItemsSource="{ Binding Messages }"
+			SeparatorVisibility="Default"
+			SeparatorColor="{ DynamicResource ListViewSeparatorColor }"
+			HasUnevenRows="false"
+			CachingStrategy="RecycleElement">
+			
+			<ListView.RowHeight>
+				<OnIdiom x:TypeArguments="x:Int32"
+					Phone="80"
+					Tablet="100"/>
+			</ListView.RowHeight>
+			
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<local:RecentChatItemTemplate/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+	
+		</ListView>
+
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="airmily.DashboardMultipleScrollMainItemTemplate"
+		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+		xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+		xmlns:local="clr-namespace:airmily;assembly=airmily">
+	<ContentView.Content>
+
+		<Grid>
+				<!-- BACKGROUND IMAGE -->
+				<ffimageloading:CachedImage 
+					Grid.Row="0"
+					Aspect="AspectFill"
+					Source="{Binding HighlightMovieImage}" 
+					Style="{ StaticResource DashboardMultipleScrollResponsiveImageStyle }"/>
+
+				<Image 
+					Grid.Row="0" 
+					Style="{ StaticResource DashboardMultipleScrollShimStyle }" />
+
+				<!-- BACKGROUND IMAGE -->
+				<Grid
+					Grid.Row="0"
+					VerticalOptions="FillAndExpand">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="60" />
+						</Grid.RowDefinitions>
+					
+						<Grid.Margin>
+							<OnIdiom 
+								x:TypeArguments="Thickness"
+								Phone="20,30,20,20"
+								Tablet="40"/>
+						</Grid.Margin>
+
+						<Grid.RowSpacing>
+							<OnIdiom 
+								x:TypeArguments="x:Double"
+								Phone="10"
+								Tablet="40"/>
+						</Grid.RowSpacing>
+
+						<Grid.VerticalOptions>
+							<OnIdiom 
+								x:TypeArguments="LayoutOptions"
+								Phone="FillAndExpand"
+								Tablet="CenterAndExpand"/>
+						</Grid.VerticalOptions>
+	
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="60*" />
+							<ColumnDefinition Width="40*" />
+						</Grid.ColumnDefinitions>
+
+						<!-- TEXT GRID -->
+						<Grid
+							Grid.Column="0"
+							Grid.Row="0"
+							VerticalOptions="Start">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+
+							<Label 
+								Grid.Row="0"
+								Text="{Binding HighlightMovieTitle}"
+								Style="{ StaticResource DashboardMultipleScrollMainItemTitleStyle }" />
+							
+							<Label 
+								Grid.Row="1"
+								Text="{Binding HighlightMovieDescription}"
+								Style="{ StaticResource DashboardMultipleScrollMainItemDescriptionStyle }"/>
+						</Grid>
+
+						<artina:Button
+							Grid.Column="0"
+							Grid.Row="1"
+							WidthRequest="200"
+							VerticalOptions="End"
+							HorizontalOptions="Start"
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							Text="Play Movie"
+							Clicked="OnMovieTapped" />
+				</Grid>
+			
+			</Grid>
+	</ContentView.Content>
+</ContentView>

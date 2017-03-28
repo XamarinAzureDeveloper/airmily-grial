@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="airmily.ChatTimelineOutgoingItemTemplate">
+	
+	<Grid
+		ColumnSpacing="0" 
+		RowSpacing="0" 
+		VerticalOptions="StartAndExpand"
+		Padding="20,0">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="14" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="20" />
+				<RowDefinition Height="20" />
+			</Grid.RowDefinitions>
+
+		
+
+			<!-- LEFT TRIANGLE -->
+			<Label
+				Grid.Row="1" Grid.Column="1"
+				HorizontalTextAlignment="Start"
+				VerticalOptions="Center"
+				TranslationX="0"
+				TranslationY="0"
+				Text="{ x:Static local:GrialShapesFont.BoldArrowLeft }"
+				TextColor="{ DynamicResource ComplementColor }" 
+				Style="{ StaticResource FontIconBase }" 
+				FontSize="26"/>
+
+			<!-- BALLOON BACKGROUND -->
+			<StackLayout
+				BackgroundColor="{ DynamicResource ComplementColor }" 
+				Grid.Row="1" 
+				Grid.Column="2"
+				Padding="10"
+				VerticalOptions="Center" >
+
+				<Label
+					TextColor="{ DynamicResource ChatLeftTextColor }"
+					FontSize="12"
+					Text="{ Binding Body }" />
+			</StackLayout>
+
+			<!-- VERTICAL LINE -->
+			<BoxView
+				Grid.RowSpan="4"
+				Grid.Column="0"
+				WidthRequest="2"
+				VerticalOptions="FillAndExpand" 
+				HorizontalOptions="Center" 
+				BackgroundColor="{ DynamicResource BaseTextColor }" />
+			
+			<!-- LEFT AVATAR -->
+			<artina:CircleImage 
+				Grid.Row="1"
+				Grid.Column="0"
+				VerticalOptions="Center"
+				Source="{ Binding From.Avatar }"
+				BorderColor="{ DynamicResource ComplementColor}"
+				Style="{ StaticResource AvatarSmall }"
+				HorizontalOptions="Center"/>
+
+			<!-- WHEN -->
+			<Label 
+				Grid.Row="2" 
+				Grid.Column="2"
+				HorizontalOptions="Start"
+				VerticalOptions="CenterAndExpand"
+				TranslationX="10"
+				TranslationY="10"
+				FontSize ="11"
+				TextColor="{ DynamicResource BaseTextColor }"
+				Text="{ Binding When }"/>
+
+			<!-- BY -->
+			<Label 
+				Grid.Row="2" Grid.Column="2"
+				TranslationY="10"
+				FontSize ="11"
+				TextColor="{ DynamicResource BaseTextColor }"
+				HorizontalTextAlignment="End"
+				VerticalTextAlignment="Center" 
+				Text="{ Binding From.Name }" />
+		
+	</Grid>
+</ContentView>

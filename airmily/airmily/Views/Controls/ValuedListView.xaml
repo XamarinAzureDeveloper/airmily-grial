@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ListView xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:controls="clr-namespace:airmily.Views.Controls;assembly=airmily"
+          x:Class="airmily.Views.Controls.ValuedListView">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <Grid BackgroundColor="#B9B9B9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Main}" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"
+                           HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Details}" Grid.Row="1" Grid.Column="0" TextColor="Gray"
+                           LineBreakMode="WordWrap" />
+                    <Label Text="{Binding Value}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" />
+                    <controls:RoundedBoxView Color="Green" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                                             CornerRadius="7" StrokeThickness="1" Stroke="Black" />
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>

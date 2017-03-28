@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.SamplesListFromCategoryItemTemplate"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
+
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<converter:NegateBooleanConverter x:Key="InvertBoolConverter" />
+		</ResourceDictionary>
+	</ContentView.Resources>
+
+	<ContentView.Content>
+		<StackLayout
+			Padding="24,0,0,0"
+			HorizontalOptions="FillAndExpand"
+			Orientation="Horizontal" Spacing="0">
+			
+			<AbsoluteLayout
+				VerticalOptions="CenterAndExpand"
+				HorizontalOptions="FillAndExpand">
+
+				<!-- ICON -->
+				<Label
+					Text="{ Binding Icon }"
+					Style="{ DynamicResource MainMenuIconStyle }"
+					HorizontalTextAlignment="Start"
+					VerticalTextAlignment="Center" 
+					AbsoluteLayout.LayoutBounds="0, 0.5, 20, 1"
+					AbsoluteLayout.LayoutFlags="XProportional, YProportional, HeightProportional"
+				/>
+
+				<!-- FULL LABEL -->
+				<Label
+					AbsoluteLayout.LayoutBounds="24, 0, 1, 1"
+					AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
+					Text="{ Binding Name }" 
+					Style="{ DynamicResource MainMenuLabelStyle }" 
+					VerticalTextAlignment="Center" 
+					IsVisible="{ Binding IsNew, Converter={ StaticResource InvertBoolConverter } }"
+					Margin="0,0,0,0"
+				/>
+
+				<!-- COMPACT LABEL -->
+				<Label 
+					IsVisible="{ Binding IsNew }"
+					Text="{ Binding Name }" 
+					Style="{ DynamicResource MainMenuLabelStyle }" HorizontalOptions="FillAndExpand"
+					VerticalTextAlignment="Center" 
+					AbsoluteLayout.LayoutBounds="24, 0, 1, 1"
+					AbsoluteLayout.LayoutFlags="WidthProportional, HeightProportional"
+					Margin="0,0,82,0"/>
+				
+				<!-- NEW BADGE -->
+				<local:RoundedLabel
+					AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
+					AbsoluteLayout.LayoutFlags="XProportional, YProportional"
+					IsVisible="{ Binding IsNew }"
+					Style="{ DynamicResource IsNewRoundedLabelStyle }" 
+					TranslationX="12"
+					HorizontalOptions="End"
+					RoundedLabelText="NEW"
+				/>
+			</AbsoluteLayout>
+
+			<Label
+				Margin="0,0,14,0"
+				Style="{ DynamicResource MainMenuRightChevronStyle }" />
+
+		</StackLayout>
+	</ContentView.Content>
+	
+</ContentView>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="airmily.Views.Controls.ImageViewGalleryTemplate">
+    <ScrollView BackgroundColor="{StaticResource BackgroundColour}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ListView BindingContext="x:Reference ViewImagePage" Grid.Column="0" HasUnevenRows="True"
+                      ItemsSource="{Binding Receipt1}" RowHeight="80">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView BindingContext="x:Reference ViewImagePage" Grid.Column="1" HasUnevenRows="True"
+                      ItemsSource="{Binding Receipt2}" RowHeight="80">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView BindingContext="x:Reference ViewImagePage" Grid.Column="2" HasUnevenRows="True"
+                      ItemsSource="{Binding Receipt3}" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollView>
+</ContentView>

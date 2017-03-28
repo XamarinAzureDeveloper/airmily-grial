@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.DashboardAppNotificationItemTemplate">
+
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<converter:GreaterThanZeroConverter
+				x:Key="DashboardItemBadgeVisibleConverter" />
+		</ResourceDictionary>
+	</ContentView.Resources>
+
+	<ContentView.Content>
+		<Grid 
+			ColumnSpacing="0" 
+			RowSpacing="0" 
+			Padding="0">
+
+			<!-- BACKGROUND -->
+			<BoxView
+				Grid.Row="0"
+				Grid.Column="0"
+				BackgroundColor="{ Binding BackgroundColor }"/>
+
+			<!-- CONTENT -->
+			<Grid 
+				Grid.Row="0"
+				Grid.Column="0"
+				VerticalOptions="FillAndExpand"
+				Padding="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="50" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<!-- TEXT -->
+				<Label
+					Grid.Row="0"
+					Grid.Column="1"
+					Margin="10"
+					TextColor="{ DynamicResource ChatLeftTextColor }"
+					FontSize="14"
+					Text="{ Binding Body }"/>
+
+				<!-- Avatar -->
+				<artina:CircleImage 
+					Grid.Row="0"
+					Grid.Column="0"
+					BorderColor="{ Binding BackgroundColor }"
+					TranslationX="0"
+					TranslationY="0"
+					Source="{ Binding Avatar }" 
+					HorizontalOptions="Start"
+					VerticalOptions="Start"
+					HeightRequest="{ 
+						artina:OnOrientationDouble 
+							Default=45,	
+							PortraitTablet=50,
+							LandscapeTablet=50 
+						}"
+					WidthRequest="{ 
+						artina:OnOrientationDouble 
+							Default=45,
+							PortraitTablet=50,
+							LandscapeTablet=50 
+						}"/>
+
+				<!-- TITLE -->
+				<Label
+					Grid.Row="1"
+					Grid.Column="0"
+					Grid.ColumnSpan="2"
+					Text="{ Binding Title }"
+					TextColor="{ DynamicResource OverImageTextColor }"
+					HorizontalOptions="FillAndExpand"
+					VerticalTextAlignment="Center"
+					VerticalOptions="End"/>
+
+				<!-- ICON -->
+				<Label
+					Grid.Row="1"
+					Grid.Column="1"
+					Text="{ Binding Icon }"
+					Style="{ StaticResource FontIcon }"
+					TextColor="{ DynamicResource OverImageTextColor }"
+					FontSize="20"
+					HorizontalOptions="End"
+					HorizontalTextAlignment="End"
+					VerticalTextAlignment="Center"
+					VerticalOptions="End"/>
+			</Grid>
+		</Grid>
+	</ContentView.Content>
+
+	<ContentView.GestureRecognizers>
+		<TapGestureRecognizer Tapped="OnTileTapped" />
+	</ContentView.GestureRecognizers>
+</ContentView>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.CardsListItemTemplate"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:effects="clr-namespace:UXDivers.Effects;assembly=UXDivers.Effects">
+
+	<Grid
+		Style="{ StaticResource CardViewStyle }"
+		BackgroundColor="{ DynamicResource BasePageColor }"
+		ColumnSpacing="20"
+		RowSpacing="0"
+		Margin="10,5,10,5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="{ artina:OnOrientationDouble 
+				Default=80,
+				PortraitTablet=110,
+				LandscapeTablet=110 }" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<!-- BACKGROUND COLOR -->
+		<BoxView
+			Grid.Row="0"
+			Grid.RowSpan="2"
+			Grid.Column="0"
+		
+			BackgroundColor="{Binding BackgroundColor}"/>
+		
+		<!-- BACKGROUND CIRCLE -->
+		<Label
+			Grid.Row="0"
+			Grid.RowSpan="2"
+			Grid.Column="0"
+			FontSize="{ artina:OnOrientationDouble 
+				Default=55,
+				PortraitTablet=65,
+				LandscapeTablet=65 }"
+			TextColor="#33000000"
+			Style="{ StaticResource FontIcon }"
+			Text="{ x:Static local:GrialShapesFont.Circle }"
+			VerticalTextAlignment="Center"
+			HorizontalTextAlignment="Center"/>
+		
+		<!-- ICON -->
+		<Label
+			Grid.Row="0"
+			Grid.RowSpan="2"
+			Grid.Column="0"
+			Text="{ Binding Icon }"
+			FontSize="{ artina:OnOrientationDouble 
+				Default=27,
+				PortraitTablet=32,
+				LandscapeTablet=32 }"
+			TextColor="White"
+			Style="{ StaticResource FontIcon }"
+			VerticalTextAlignment="Center"
+			HorizontalTextAlignment="Center"/>
+
+		<!-- CATEGORY -->
+		<Label
+			Grid.Row="0"
+			Grid.Column="1"
+			Text="{ Binding Name }"
+			TextColor="{ DynamicResource BaseTextColor }"
+			VerticalTextAlignment="End"/>
+
+		<!-- SCREEN NUMBER -->
+		<Label
+			Grid.Row="1"
+			Grid.Column="1"
+			Text="{Binding SamplesList.Count, StringFormat='{0:F0} screens'} }"
+			FontAttributes="Italic"
+			FontSize="14"
+			Opacity=".5"
+			VerticalTextAlignment="Start"
+			TextColor="{ DynamicResource BaseTextColor }"/>
+
+		<Label
+			Grid.Row="0"
+			Grid.RowSpan="2"
+			Grid.Column="1"
+			WidthRequest="20"
+			HorizontalOptions="End"
+			TextColor="{ Binding BackgroundColor }"
+			Style="{ DynamicResource MainMenuRightChevronStyle }"
+			Margin="0,0,20,0"/>
+		
+	</Grid>
+</ContentView>

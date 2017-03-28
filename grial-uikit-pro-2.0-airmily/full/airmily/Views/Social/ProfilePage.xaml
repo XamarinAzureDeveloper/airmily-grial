@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	x:Class="airmily.ProfilePage"
+	Title="Profile"
+	x:Name="page">
+
+	<AbsoluteLayout Padding="0">
+		<!-- MAIN IMAGE -->
+		<Image
+			x:Name="img"
+			Aspect="AspectFill"
+			Source="profile_preview.jpg"
+			AnchorX="0.5"
+			AnchorY="0.5"
+			TranslationY="-10"
+			Scale="1.2"
+			AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+			AbsoluteLayout.LayoutFlags="All"/>
+	
+		<Grid RowSpacing="0"
+			AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+		 	AbsoluteLayout.LayoutFlags="All">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="40*" />
+			</Grid.RowDefinitions>
+	
+			<!-- TOP ROW -->
+			<StackLayout
+				Spacing="0"
+				Padding="10"
+				VerticalOptions="FillAndExpand"
+				Orientation="Vertical"
+				Grid.Row="0">
+	
+			</StackLayout>
+	
+	
+			<!-- BOTTOM ROW -->
+			<StackLayout
+				Spacing="0"
+				Padding="0"
+				VerticalOptions="End"
+				Orientation="Vertical"
+				Grid.Row="1" 
+				AbsoluteLayout.LayoutBounds="0, 1, 1, 1">
+		
+				<StackLayout Padding="0" Spacing="0" >
+			
+					<StackLayout Padding="20,0,20,20">
+						<!-- HEADERS -->
+						<Label
+							Text="Richard Stainford"
+							FontAttributes="Bold"
+							LineBreakMode="WordWrap"
+							VerticalOptions="End"
+							TextColor="{ DynamicResource OverImageTextColor }"
+							FontSize="{ artina:OnOrientationDouble 
+								Default=25,
+								PortraitTablet=40,
+								LandscapeTablet=40 }"/>
+			
+						<Label
+							Text="Photography is my passion. Black and white is the way I see the world."
+							LineBreakMode="WordWrap"
+							VerticalOptions="End"
+							TextColor="{ DynamicResource OverImageTextColor }"
+							FontAttributes="None"
+							FontSize="{ artina:OnOrientationDouble 
+								Default=14,
+								PortraitTablet=20,
+								LandscapeTablet=20 }"/>
+				
+						<BoxView Style="{StaticResource BrandNameOrnamentStyle}"/>
+			
+					</StackLayout>
+			
+			
+					<!-- TOOLBAR -->
+					<Grid 
+						Style="{ StaticResource ToolbarStyle }" 
+						BackgroundColor="{ DynamicResource TranslucidBlack }">
+						
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="25*" />
+							<ColumnDefinition Width="25*" />
+							<ColumnDefinition Width="25*" />
+							<ColumnDefinition Width="25*" />
+						</Grid.ColumnDefinitions>
+			
+						<StackLayout
+								Grid.Column="0"
+								Orientation="Horizontal"
+								VerticalOptions="Center"
+								HorizontalOptions="Center"
+								Spacing="0">
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text="{ x:Static local:GrialShapesFont.FavoriteBorder }"
+									FontFamily="{ StaticResource IconsFontFamily }"
+									TextColor="{ DynamicResource AccentColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text=" 1629"
+									TextColor="{ DynamicResource OverImageTextColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+							</StackLayout>
+
+							<StackLayout
+								Grid.Column="1"
+								Orientation="Horizontal"
+								VerticalOptions="Center"
+								HorizontalOptions="Center"
+								Spacing="0">
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text="{ x:Static local:GrialShapesFont.ChatBubble }"
+									FontFamily="{ StaticResource IconsFontFamily }"
+									TextColor="{ DynamicResource AccentColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text=" 235"
+									TextColor="{ DynamicResource OverImageTextColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+							</StackLayout>
+
+							<StackLayout
+								Grid.Column="2"
+								Orientation="Horizontal"
+								VerticalOptions="Center"
+								HorizontalOptions="Center"
+								Spacing="0">
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text="{ x:Static local:GrialShapesFont.Person }"
+									FontFamily="{ StaticResource IconsFontFamily }"
+									TextColor="{ DynamicResource AccentColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text=" 1209"
+									TextColor="{ DynamicResource OverImageTextColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+							</StackLayout>
+							
+							<StackLayout
+								Grid.Column="3"
+								Orientation="Horizontal"
+								VerticalOptions="Center"
+								HorizontalOptions="Center"
+								Spacing="0">
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text="{ x:Static local:GrialShapesFont.StarBorder }"
+									FontFamily="{ StaticResource IconsFontFamily }"
+									TextColor="{ DynamicResource AccentColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+
+								<Label
+									VerticalTextAlignment="Center" 
+									HorizontalTextAlignment="Center"
+									Text=" 427"
+									TextColor="{ DynamicResource OverImageTextColor }">
+									<Label.FontSize>
+										<OnIdiom x:TypeArguments="x:Double" 
+				                            Phone="15" 
+				                            Tablet="20" />
+									</Label.FontSize> 
+								</Label>
+							</StackLayout>
+						
+					</Grid>
+
+				</StackLayout>
+
+			</StackLayout>
+		</Grid>
+
+	</AbsoluteLayout>
+</ContentPage>

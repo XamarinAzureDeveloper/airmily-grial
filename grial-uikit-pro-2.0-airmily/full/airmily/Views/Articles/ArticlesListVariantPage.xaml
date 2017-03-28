@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="airmily.ArticlesListVariantPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:local="clr-namespace:airmily;assembly=airmily"
+	Title="Articles List Variant"
+	BackgroundColor="{DynamicResource MainWrapperBackgroundColor}" >
+
+	<!-- MAIN WRAPPER -->
+		
+	<!-- 
+		The MOST PERFORMANT list options for this layout
+		Items WON'T change their height
+	-->
+
+	<ListView
+		CachingStrategy="RecycleElement"
+		SeparatorVisibility="None" 
+		SeparatorColor="Transparent"
+		ItemsSource="{Binding PostsList}"
+		ItemTapped="OnItemTapped"
+		RowHeight="340"
+		HasUnevenRows="true">
+
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<local:ArticleVariantItemTemplate
+						Padding="{DynamicResource MainWrapperPadding}"/>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+
+	<!-- 
+		Use this when you need the card to grow
+		its height according to contained text inside.
+		This cannot be cached, otherwise card will
+		at some point look with wrong heights.
+	-->
+
+	<!--	
+	<ListView 
+		x:Name="ArticlesListView"
+		SeparatorVisibility="Default"
+		SeparatorColor="#DFDFDF"
+		ItemsSource="{Binding PostsList}"
+		ItemTapped="OnItemTapped"
+		HasUnevenRows="true"
+		>
+
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<local:ArticleVariantItemTemplate/>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+	-->
+</ContentPage>
