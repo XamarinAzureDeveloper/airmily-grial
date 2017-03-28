@@ -22,8 +22,6 @@
 				Title="{Binding Title}" IsBackButton="{Binding IsBackButton}" BackCmd="{Binding BackCmd}"
 				OtherText="{Binding OtherText}" OtherCmd="{Binding OtherCmd}"/>
 			
-			<Label Text="{Binding NumberOfCards}" />
-					  
 			<ListView SeparatorVisibility="Default" ItemsSource="{Binding CardsList}" RowHeight="180" HasUnevenRows="True" IsRefreshing="{Binding IsLoading}"
 					  IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" SelectedItem="{Binding SelectedCard, Mode=TwoWay}">
 
